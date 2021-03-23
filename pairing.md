@@ -1,13 +1,13 @@
 ## Pairing Matrix
 
-Dev 1: Salkic, Emsad
-Dev 2: Duraković, Muhammed
-Dev 3: Edlinger, Timo
-Dev 4: Gashi, Mergim
-Dev 5: Križanec, Nives
-Dev 6: Mic, Ionut-Florin
-Dev 7: Salkić, Ema
-Dev 8: Saraç, Muhammed
+- Dev 1: Salkic, Emsad
+- Dev 2: Duraković, Muhammed
+- Dev 3: Edlinger, Timo
+- Dev 4: Gashi, Mergim
+- Dev 5: Križanec, Nives
+- Dev 6: Mic, Ionut-Florin
+- Dev 7: Salkić, Ema
+- Dev 8: Saraç, Muhammed
   
 
 
