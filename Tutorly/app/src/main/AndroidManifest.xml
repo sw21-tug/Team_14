@@ -10,9 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Tutorly">
         <activity
+            android:name=".MainActivity2"
+            android:label="@string/title_activity_main2"
+            android:theme="@style/Theme.Tutorly.NoActionBar"></activity>
+        <activity
             android:name=".TownSelection"
             android:label="@string/title_activity_town_selection"
-            android:theme="@style/Theme.Tutorly.NoActionBar"></activity>
+            android:theme="@style/Theme.Tutorly.NoActionBar" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
