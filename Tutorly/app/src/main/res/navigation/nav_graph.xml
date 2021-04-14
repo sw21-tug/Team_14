@@ -3,23 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/loginAActivity">
+    app:startDestination="@id/loginActivity">
     <activity
-        android:id="@+id/loginAActivity"
-        android:name="com.example.tutorly.LoginAActivity"
-        android:label="activity_login_a"
-        tools:layout="@layout/activity_login_a" >
+        android:id="@+id/loginActivity"
+        android:name="com.example.tutorly.LoginActivity"
+        android:label="activity_login"
+        tools:layout="@layout/activity_login" >
         <action
-            android:id="@+id/action_loginAActivity_to_registerAActivity"
-            app:destination="@id/registerAActivity" />
+            android:id="@+id/action_loginActivity_to_registerActivity"
+            app:destination="@id/registerActivity" />
     </activity>
     <activity
-        android:id="@+id/registerAActivity"
-        android:name="com.example.tutorly.RegisterAActivity"
-        android:label="activity_register_a"
-        tools:layout="@layout/activity_register_a" >
+        android:id="@+id/registerActivity"
+        android:name="com.example.tutorly.RegisterActivity"
+        android:label="activity_register"
+        tools:layout="@layout/activity_register" >
         <action
-            android:id="@+id/action_registerAActivity_to_loginAActivity"
-            app:destination="@id/loginAActivity" />
+            android:id="@+id/action_registerActivity_to_loginActivity"
+            app:destination="@id/loginActivity" />
     </activity>
 </navigation>
