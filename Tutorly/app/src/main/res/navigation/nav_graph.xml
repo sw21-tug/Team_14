@@ -3,24 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/loginActivity">
-
-    <fragment
-        android:id="@+id/loginActivity"
-        android:name="com.example.tutorly.ui.login.LoginActivity"
-        android:label="login_activity"
-        tools:layout="@layout/login_activity" >
-        <action
-            android:id="@+id/loginToRegister"
-            app:destination="@id/registerActivity" />
-    </fragment>
+    app:startDestination="@id/loginAActivity">
     <activity
-        android:id="@+id/registerActivity"
-        android:name="com.example.tutorly.RegisterActivity"
-        android:label="activity_register"
-        tools:layout="@layout/activity_register" >
+        android:id="@+id/loginAActivity"
+        android:name="com.example.tutorly.LoginAActivity"
+        android:label="activity_login_a"
+        tools:layout="@layout/activity_login_a" >
         <action
-            android:id="@+id/action_registerActivity_to_loginActivity"
-            app:destination="@id/loginActivity" />
+            android:id="@+id/action_loginAActivity_to_registerAActivity"
+            app:destination="@id/registerAActivity" />
+    </activity>
+    <activity
+        android:id="@+id/registerAActivity"
+        android:name="com.example.tutorly.RegisterAActivity"
+        android:label="activity_register_a"
+        tools:layout="@layout/activity_register_a" >
+        <action
+            android:id="@+id/action_registerAActivity_to_loginAActivity"
+            app:destination="@id/loginAActivity" />
     </activity>
 </navigation>
