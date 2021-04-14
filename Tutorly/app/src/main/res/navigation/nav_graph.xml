@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/loginActivity">
+
+    <fragment
+        android:id="@+id/loginActivity"
+        android:name="com.example.tutorly.ui.login.LoginActivity"
+        android:label="login_activity"
+        tools:layout="@layout/login_activity" >
+        <action
+            android:id="@+id/loginToRegister"
+            app:destination="@id/registerActivity" />
+    </fragment>
+    <activity
+        android:id="@+id/registerActivity"
+        android:name="com.example.tutorly.RegisterActivity"
+        android:label="activity_register"
+        tools:layout="@layout/activity_register" >
+        <action
+            android:id="@+id/action_registerActivity_to_loginActivity"
+            app:destination="@id/loginActivity" />
+    </activity>
+</navigation>

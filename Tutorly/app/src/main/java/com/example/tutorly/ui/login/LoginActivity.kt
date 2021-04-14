@@ -11,14 +11,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ProgressBar
-import android.widget.Toast
+import android.widget.*
+import androidx.navigation.fragment.findNavController
 
 import com.example.tutorly.R
 
-class LoginFragment : Fragment() {
+class LoginActivity : Fragment() {
 
     private lateinit var loginViewModel: LoginViewModel
 
@@ -27,13 +25,28 @@ class LoginFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.login_fragment, container, false)
+        return inflater.inflate(R.layout.login_activity, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
         super.onViewCreated(view, savedInstanceState)
+        view.findViewById<Button>(R.id.login).setOnClickListener {
+            //view.findViewById<TextView>(R.id.login).text = "HALLO"
+            //Toast.makeText(this@MainActivity, "You clicked on TextView 'Click Me'.", Toast.LENGTH_SHORT).show()
+            findNavController().navigate(R.id.loginToRegister)
+        }
         loginViewModel = ViewModelProvider(this, LoginViewModelFactory())
             .get(LoginViewModel::class.java)
+
+
+        view.findViewById<TextView>(R.id.registerLink).setOnClickListener {
+            view.findViewById<TextView>(R.id.registerLink).text = "HALLO"
+            //Toast.makeText(this@MainActivity, "You clicked on TextView 'Click Me'.", Toast.LENGTH_SHORT).show()
+            //findNavController().navigate(R.id.loginToRegister)
+        }
+
+
 
         val usernameEditText = view.findViewById<EditText>(R.id.username)
         val passwordEditText = view.findViewById<EditText>(R.id.password)
@@ -102,6 +115,7 @@ class LoginFragment : Fragment() {
             )
         }
     }
+
 
     private fun updateUiWithUser(model: LoggedInUserView) {
         val welcome = getString(R.string.welcome) + model.displayName
