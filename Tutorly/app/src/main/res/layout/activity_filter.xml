@@ -11,13 +11,17 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         tools:layout_editor_absoluteX="128dp"
+        android:background="#D1E3FF"
         tools:layout_editor_absoluteY="142dp">
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/filter" />
+            android:textSize="30sp"
+            android:background="#7088ff"
+            android:textColor="#000"
+            android:text="Selected subjects:"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/selectedSubjectsView"
@@ -28,9 +32,13 @@
             android:id="@+id/textView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Available subjects" />
+            android:textSize="30sp"
+            android:background="#7088ff"
+            android:textColor="#000"
+            android:text="Available subjects:" />
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/availableSubjectsView"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </LinearLayout>
