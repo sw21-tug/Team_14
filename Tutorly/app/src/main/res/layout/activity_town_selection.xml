@@ -12,33 +12,37 @@
         android:theme="@style/Theme.Tutorly.AppBarOverlay">
 
 
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/Theme.Tutorly.PopupOverlay" />
-
     </com.google.android.material.appbar.AppBarLayout>
 
     <TextView
         android:id="@+id/lblTownSelection"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Please type in your city:"
-        android:textSize="10pt"
         android:layout_marginTop="70dp"
-        />
+        android:text="Please type in your city:"
+        android:textSize="10pt" />
 
-    <include layout="@layout/content_town_selection" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
+    <include
+        android:id="@+id/include"
+        layout="@layout/content_town_selection"
+        app:layout_anchor="@+id/include"
+        app:layout_anchorGravity="center" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="198dp"
+        android:layout_height="94dp"
+        android:text="Get location"
+        app:layout_anchor="@+id/include"
+        app:layout_anchorGravity="center" />
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        app:popupTheme="@style/Theme.Tutorly.PopupOverlay" />
+
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
