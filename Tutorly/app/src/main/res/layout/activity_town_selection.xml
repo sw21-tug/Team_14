@@ -31,7 +31,7 @@
         app:layout_constraintTop_toBottomOf="@+id/titleToolbar" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/autofillLoc"
         android:layout_width="0dp"
         android:layout_height="47dp"
         android:layout_marginStart="8dp"
@@ -41,7 +41,7 @@
         android:layout_marginRight="8dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="f.e Graz"
+        android:hint="or get your location automatically"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -51,9 +51,9 @@
         android:id="@+id/btnGetlocation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="140dp"
-        android:layout_marginLeft="140dp"
-        android:layout_marginBottom="108dp"
+        android:layout_marginStart="132dp"
+        android:layout_marginLeft="132dp"
+        android:layout_marginBottom="436dp"
         android:text="Get Location"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
