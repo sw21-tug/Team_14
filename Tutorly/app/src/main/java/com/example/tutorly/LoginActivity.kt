@@ -19,6 +19,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.Toast
+import com.example.tutorly.database.UserAutheniticator
 
 class LoginActivity : AppCompatActivity() {
 
@@ -60,6 +61,8 @@ class LoginActivity : AppCompatActivity() {
 
             val email: String = inputEmail.text.toString().trim {it <= ' '}
             val password: String = inputPassword.text.toString().trim {it <= ' '}
+            UserAutheniticator().userSignIn(email,password).
+
 
         }
     }

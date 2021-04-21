@@ -7,6 +7,8 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import com.example.tutorly.database.User
+import com.example.tutorly.database.UserAutheniticator
 
 class RegisterActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -74,6 +76,8 @@ class RegisterActivity : AppCompatActivity() {
             val password: String = inputPassword.text.toString().trim {it <= ' '}
             val firstname_val: String = firstname.text.toString().trim {it <= ' '}
             val lastname_val: String = lastname.text.toString().trim {it <= ' '}
+
+            UserAutheniticator().createUserAccount(User(firstname_val,lastname_val,email,password))
 
         }
 

@@ -2,8 +2,18 @@ package com.example.tutorly.database
 
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import android.app.Activity
+import android.content.Intent
+import android.os.Bundle
+import android.util.Log
+import android.widget.Toast
+import com.example.tutorly.RegisterActivity
+import com.google.android.gms.tasks.Task
+import com.google.firebase.auth.AuthResult
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
-class UserAutheniticator {
+class UserAutheniticator : Activity() {
     private var userAusthenticator : FirebaseAuth = FirebaseAuth.getInstance()
     private var currentUser : FirebaseUser? = userAusthenticator.getCurrentUser()
 
@@ -19,6 +29,16 @@ class UserAutheniticator {
             user.setUserID(currentUser!!.getIdToken(false).result.toString())
         }
         return currentUser
+    }
+
+    fun userSignIn(email: String,password: String)
+    {
+        var result : Boolean = false
+        userAusthenticator.signInWithEmailAndPassword(email, password).addOnCompleteListener(this) { task ->
+            result = task.isSuccessful
+            println(result.toString())
+
+        }
     }
 
     fun getCurrentUser(): FirebaseUser? {
