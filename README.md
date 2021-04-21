@@ -18,3 +18,25 @@ Bajrektarevic, Amir
 - Mic, Ionut-Florin
 - Salkić, Ema
 - Saraç, Muhammed
+
+
+### Week's activity (21.4.2021):
+
+Developers working in teams, currently implementing:
+
+Sign in activity, possibility for Users to sign in/ log in -> https://github.com/sw21-tug/Team_14/issues/1
+
+Possibility for users to select subject they want to have tutorial from: https://github.com/sw21-tug/Team_14/issues/2
+
+Possibility for users to select the level of knowledge needed:  https://github.com/sw21-tug/Team_14/issues/3
+
+
+Possibility for users to select the town in which they are searching tutors: https://github.com/sw21-tug/Team_14/issues/4
+
+
+Providing core database for the application: https://github.com/sw21-tug/Team_14/issues/11
+
+
+
+
+
