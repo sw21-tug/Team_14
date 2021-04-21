@@ -4,16 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     app:startDestination="@id/loginActivity">
-
-    <fragment
+    <activity
         android:id="@+id/loginActivity"
-        android:name="com.example.tutorly.ui.login.LoginActivity"
-        android:label="login_activity"
-        tools:layout="@layout/login_activity" >
+        android:name="com.example.tutorly.LoginActivity"
+        android:label="activity_login"
+        tools:layout="@layout/activity_login" >
         <action
-            android:id="@+id/loginToRegister"
+            android:id="@+id/action_loginActivity_to_registerActivity"
             app:destination="@id/registerActivity" />
-    </fragment>
+    </activity>
     <activity
         android:id="@+id/registerActivity"
         android:name="com.example.tutorly.RegisterActivity"
