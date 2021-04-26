@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">Tutorly</string>
     <string name="filter">Filter</string>
+    <string name="subject_image_description">Example image of subject</string>
+    <string name="activity_filter_selected_subjects">Selected subjects:</string>
+    <string name="activity_filter_available_subjects">Available subjects:</string>
+    <string name="filterRadioBtnLvl1">10 Klasse</string>
+    <string name="filterRadioBtnLvl2">Matura</string>
+    <string name="filterRadioBtnLvl3">University</string>
 </resources>
