@@ -1,5 +1,28 @@
 <resources>
     <string name="app_name">Tutorly</string>
+    <string name="filter">Filter</string>
+    <string name="subject_image_description">Example image of subject</string>
+    <string name="activity_filter_selected_subjects">Selected subjects:</string>
+    <string name="activity_filter_available_subjects">Available subjects:</string>
+    <string name="filterRadioBtnLvl1">School</string>
+    <string name="filterRadioBtnLvl2">Matura</string>
+    <string name="filterRadioBtnLvl3">University</string>
+    <string name="title_activity_town_selection">Town Selection</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="nextstep">Next Step</string>
+    <string name="city">Please type in your city:</string>
+    <string name="after_selection"> </string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="title_activity_main2">MainActivity</string>
+    <!-- Place-API autocomplete / TownSelection -->
+    <string name="API">AIzaSyBpVMXoMWaJm8DaHkwpWi16t5IeOKAJ7FY</string>
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
