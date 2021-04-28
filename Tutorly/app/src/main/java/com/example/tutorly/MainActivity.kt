@@ -3,6 +3,7 @@ package com.example.tutorly
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 
 class MainActivity : AppCompatActivity() {
@@ -21,7 +22,6 @@ class MainActivity : AppCompatActivity() {
 
     fun switchToFilter(view: View) {
         val switchIntent = Intent(this, FilterActivity::class.java).apply() {
-
         }
         startActivity(switchIntent)
     }
