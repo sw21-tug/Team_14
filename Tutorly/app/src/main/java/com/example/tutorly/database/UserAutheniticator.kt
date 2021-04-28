@@ -12,6 +12,7 @@ import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import kotlinx.coroutines.*
 
 class UserAutheniticator : Activity() {
     private var userAusthenticator : FirebaseAuth = FirebaseAuth.getInstance()
@@ -27,18 +28,26 @@ class UserAutheniticator : Activity() {
             task ->
             currentUser = task.user
             user.setUserID(currentUser!!.getIdToken(false).result.toString())
+
         }
         return currentUser
     }
 
-    fun userSignIn(email: String,password: String)
+    fun userSignIn(email: String,password: String): Boolean
     {
         var result : Boolean = false
-        userAusthenticator.signInWithEmailAndPassword(email, password).addOnCompleteListener(this) { task ->
+
+       userAusthenticator.signInWithEmailAndPassword(email, password).addOnCompleteListener()
+       {
+            task ->
             result = task.isSuccessful
             println(result.toString())
-
         }
+
+        println(result.toString())
+        return result;
+
+
     }
 
     fun getCurrentUser(): FirebaseUser? {
