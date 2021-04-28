@@ -62,7 +62,7 @@ class LoginActivity : AppCompatActivity() {
             val email: String = inputEmail.text.toString().trim {it <= ' '}
             val password: String = inputPassword.text.toString().trim {it <= ' '}
             UserAutheniticator().userSignIn(email,password)
-            val intent = Intent(this, RegisterActivity::class.java)
+            val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
 
         }

@@ -72,6 +72,12 @@ class RegisterActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
+            Toast.makeText(
+                    this@RegisterActivity,
+                    "Name is empty!",
+                    Toast.LENGTH_SHORT
+            ).show()
+
             val email: String = inputEmail.text.toString().trim {it <= ' '}
             val password: String = inputPassword.text.toString().trim {it <= ' '}
             val firstname_val: String = firstname.text.toString().trim {it <= ' '}
