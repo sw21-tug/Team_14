@@ -20,6 +20,9 @@ import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.Toast
 import com.example.tutorly.database.UserAutheniticator
+import kotlinx.coroutines.*
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.GlobalScope
 
 class LoginActivity : AppCompatActivity() {
 
@@ -61,9 +64,31 @@ class LoginActivity : AppCompatActivity() {
 
             val email: String = inputEmail.text.toString().trim {it <= ' '}
             val password: String = inputPassword.text.toString().trim {it <= ' '}
-            UserAutheniticator().userSignIn(email,password)
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
+            lifecycleScope.launch {
+                try {
+                    UserAutheniticator().userSignIn(email,password)?.let {
+                        val intent = Intent(this@LoginActivity, MainActivity::class.java)
+                        startActivity(intent)
+                    } ?: run {
+                        Toast.makeText(
+                            this@LoginActivity,
+                            "Login failed!",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                } catch (e: Exception) {
+                    Toast.makeText(
+                        this@LoginActivity,
+                        "Login failed!",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+
+            }
+
+
+
+
 
         }
     }

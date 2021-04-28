@@ -13,6 +13,7 @@ import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.*
+import kotlinx.coroutines.tasks.await
 
 class UserAutheniticator : Activity() {
     private var userAusthenticator : FirebaseAuth = FirebaseAuth.getInstance()
@@ -33,9 +34,11 @@ class UserAutheniticator : Activity() {
         return currentUser
     }
 
-    fun userSignIn(email: String,password: String): Boolean
+    suspend fun userSignIn(email: String,password: String): FirebaseUser?
     {
-        var result : Boolean = false
+        userAusthenticator.signInWithEmailAndPassword(email, password).await()
+        return userAusthenticator.currentUser ?: throw Exception("login-error")
+        /*var result : Boolean = false
 
        userAusthenticator.signInWithEmailAndPassword(email, password).addOnCompleteListener()
        {
@@ -43,11 +46,9 @@ class UserAutheniticator : Activity() {
             result = task.isSuccessful
             println(result.toString())
         }
-
+        return userAusthenticator.isSuccessful
         println(result.toString())
-        return result;
-
-
+        return result;*/
     }
 
     fun getCurrentUser(): FirebaseUser? {
