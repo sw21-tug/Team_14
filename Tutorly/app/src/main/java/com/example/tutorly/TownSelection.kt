@@ -20,6 +20,7 @@ import com.google.android.libraries.places.widget.model.AutocompleteActivityMode
 import java.util.*
 import javax.net.ssl.SSLEngineResult
 
+
 class TownSelection : AppCompatActivity() {
 
 
@@ -33,7 +34,6 @@ class TownSelection : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_town_selection)
         setSupportActionBar(findViewById(R.id.titleToolbar))
-
 
 
         placesAutocomplete()
@@ -50,7 +50,6 @@ class TownSelection : AppCompatActivity() {
 
         autocompleteFragment.setHint("City..")
 
-
         autocompleteFragment.setOnPlaceSelectedListener(object : PlaceSelectionListener {
             override fun onPlaceSelected(p0: Place) {
                 //Log.i(TAG, "Place: ${place.name}, ${place.id}")
@@ -66,6 +65,5 @@ class TownSelection : AppCompatActivity() {
         })
     }
 
-
-
 }
+
