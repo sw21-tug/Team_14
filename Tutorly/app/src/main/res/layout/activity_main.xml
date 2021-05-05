@@ -10,12 +10,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:layout_editor_absoluteX="198dp"
-        tools:layout_editor_absoluteY="352dp">
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="16dp">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <EditText
@@ -28,24 +28,28 @@
                 android:text="Subject" />
 
             <Button
-                android:id="@+id/btnFilter"
+                android:id="@+id/btnTownSelection"
                 android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Town Selection" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="61dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnFilter"
+                android:layout_width="157dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:onClick="switchToFilter"
                 android:text="Filter" />
-            <Button
-                android:id="@+id/btnTownSelection"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="120dp"
-                android:layout_marginLeft="120dp"
-                android:layout_marginBottom="424dp"
-                android:text="Town Selection"
-                app:layout_constraintBottom_toBottomOf="@+id/btnFilter"
-                app:layout_constraintStart_toStartOf="parent" />
-
-
         </LinearLayout>
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
