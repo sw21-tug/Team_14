@@ -33,6 +33,11 @@ class RecyclerViewAdapter(private val context: Context, private val subjects: Ar
         }
     }
 
+    fun getSubjects() : ArrayList<Subject>{
+
+        return subjects
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.filter_cardview_layout, parent, false)
         holder = ViewHolder(view)

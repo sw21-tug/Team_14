@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Tutorly</string>
+    <string name="title_activity_town_selection">Выбор города</string>
+    <string name="city">Пожалуйста, введите свой город</string>
+    <string name="nextstep" translatable="false">Следующий шаг</string>
+    <string name="choose_lang">Выберите язык</string>
+    <string name="filter">Фильтр</string>
+    <string name="subject_image_description">Пример изображения предмета</string>
+    <string name="activity_filter_selected_subjects">Избранные предметы</string>
+    <string name="activity_filter_available_subjects">Доступные предметы</string>
+    <string name="filterRadioBtnLvl1">Школа</string>
+    <string name="filterRadioBtnLvl2">продвинутый уровень</string>
+    <string name="filterRadioBtnLvl3">Университет</string>
+    <string name="prompt_email">Электронное письмо</string>
+    <string name="prompt_password">Пароль</string>
+    <string name="prompt_password_again">Подтвердить Пароль</string>
+    <string name="action_sign_in">Войти</string>
+    <string name="action_sign_in_short">Войти</string>
+    <string name="welcome">Добро пожаловать!</string>
+    <string name="invalid_username">Неверное имя пользователя</string>
+    <string name="invalid_password">Пароль должен содержать более 5 символов.</string>
+    <string name="first_name">Имя</string>
+    <string name="last_name">Фамилия</string>
+    <string name="login_failed">Ошибка входа</string>
+    <string name="action_register">регистр</string>
+    <string name="town_selection">выбор города</string>
+    <string name="change_language">изменить язык</string>
+    <string name="register_account">Нет учетной записи? регистр</string>
+    <string name="have_account">Уже есть аккаунт? Войти</string>
+    <string name="subject">предмет</string>
+    <string name="german">Немецкий</string>
+    <string name="german_lang">немецкий язык</string>
+    <string name="pyhsics">Физика</string>
+    <string name="lear_physics">изучать физику</string>
+    <string name="english">английский</string>
+    <string name="learn_english">Выучить английский язык</string>
+    <string name="maths">Математика</string>
+    <string name="learn_maths">Учить 2 + 2</string>
+    <string name="example_subject">Пример темы</string>
+    <string name="learn_example_subject">выучить тему примера</string>
+</resources>

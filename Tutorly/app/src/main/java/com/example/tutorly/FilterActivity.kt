@@ -26,13 +26,13 @@ class FilterActivity : AppCompatActivity() {
           * add possibility to get a list of selected subjects
           * add possibility to get radio button status
          */
-        availableSubjects.add(Subject("German", "German language"))
-        availableSubjects.add(Subject("Physics", "Learn physics"))
-        availableSubjects.add(Subject("English", "Learn english"))
-        availableSubjects.add(Subject("Maths", "Learn 2+2"))
-        availableSubjects.add(Subject("ExampleSubject1", "Learn ExampleSubject1"))
-        availableSubjects.add(Subject("ExampleSubject2", "Learn ExampleSubject2"))
-        availableSubjects.add(Subject("ExampleSubject3", "Learn ExampleSubject3"))
+        availableSubjects.add(Subject(resources.getString(R.string.german), resources.getString(R.string.german_lang)))
+        availableSubjects.add(Subject(resources.getString(R.string.pyhsics), resources.getString(R.string.lear_physics)))
+        availableSubjects.add(Subject(resources.getString(R.string.english), resources.getString(R.string.learn_english)))
+        availableSubjects.add(Subject(resources.getString(R.string.maths), resources.getString(R.string.learn_maths)))
+        availableSubjects.add(Subject(resources.getString(R.string.example_subject), resources.getString(R.string.learn_example_subject)))
+        availableSubjects.add(Subject(resources.getString(R.string.example_subject), resources.getString(R.string.learn_example_subject)))
+        availableSubjects.add(Subject(resources.getString(R.string.example_subject), resources.getString(R.string.learn_example_subject)))
 
         val filterRecyclerView = findViewById<RecyclerView>(R.id.filterRecyclerView)
         filterRecyclerView.setHasFixedSize(true)
