@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="fab_margin">16dp</dimen>
+    <!-- Margin between the checked icon and the card -->
+    <dimen xmlns:tools="http://schemas.android.com/tools"
+        tools:override="true"
+        name="mtrl_card_checked_icon_margin">8dp</dimen>
+    <!-- Size of the icon to be placed when the card is checked -->
+    <dimen xmlns:tools="http://schemas.android.com/tools"
+        tools:override="true"
+        name="mtrl_card_checked_icon_size">40dp</dimen>
+   <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="fragment_horizontal_margin">16dp</dimen>
+    <dimen name="fragment_vertical_margin">16dp</dimen>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+</resources>
