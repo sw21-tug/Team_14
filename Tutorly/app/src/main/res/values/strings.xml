@@ -54,5 +54,7 @@
     <string name="learn_maths">Learn 2+2</string>
     <string name="example_subject">ExampleSubject</string>
     <string name="learn_example_subject">learn ExampleSubject</string>
+    <string name="city_hint">City</string>
+    <string name="lang_short">EN</string>
 
 </resources>
