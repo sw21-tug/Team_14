@@ -2,6 +2,7 @@ package com.example.tutorly
 
 import android.app.Activity
 import android.app.AlertDialog
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -42,17 +43,18 @@ class LoginActivity : AppCompatActivity() {
         val inputPassword: EditText = findViewById(R.id.input_password_login)
 
         changeLang.setOnClickListener {
-
             val list = arrayOf("English", "Russian")
             val builder = AlertDialog.Builder(this@LoginActivity)
             builder.setTitle(R.string.choose_lang)
 
             builder.setSingleChoiceItems(list, -1) { dialog, which ->
                 if (which == 0) {
-                    changeLang("default")
+                    Translation().changeLang("default", this)
+                    recreate()
                 }
                 else if (which == 1) {
-                    changeLang("kv")
+                    Translation().changeLang("kv", this)
+                    recreate()
                 }
                 dialog.dismiss()
             }
@@ -112,16 +114,13 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    private fun changeLang(localeName: String) {
+    fun changeLang(localeName: String, context: Context) {
         locale = Locale(localeName)
-        val res = resources
+        val res = context.resources
         val dm = res.displayMetrics
         val conf = res.configuration
         conf.locale = locale
         res.updateConfiguration(conf, dm)
-        val intent = Intent(
-                this, LoginActivity::class.java)
-        startActivity(intent)
     }
 
 }  
