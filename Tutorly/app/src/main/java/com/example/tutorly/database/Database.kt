@@ -9,10 +9,11 @@ class Database constructor(private val reference: DatabaseReference = FirebaseDa
 {
     val subject_list = ArrayList<Subject>()
     val tutor_list = ArrayList<Tutor>()
+    lateinit var dbSubjectListener: ValueEventListener
 
     fun getSubjectsList(updateUI: (newSubjects: ArrayList<Subject>) -> Unit) {
         val subjects_ref = reference.child("subjects")
-        val postListener = object : ValueEventListener {
+        dbSubjectListener = object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 // Get Post object and use the values to update the UI
                 for(subject_data in dataSnapshot.children)
@@ -50,7 +51,7 @@ class Database constructor(private val reference: DatabaseReference = FirebaseDa
                 )
             }
         }
-        subjects_ref.addValueEventListener(postListener)
+        subjects_ref.addValueEventListener(dbSubjectListener)
     }
 
     fun getTutorList(updateUI: (newTutors: ArrayList<Tutor>) -> Unit) {
