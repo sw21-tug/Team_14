@@ -78,6 +78,8 @@ class RegisterActivity : AppCompatActivity() {
             val lastname_val: String = lastname.text.toString().trim {it <= ' '}
 
             UserAutheniticator().createUserAccount(User(firstname_val,lastname_val,email,password))
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
 
         }
 

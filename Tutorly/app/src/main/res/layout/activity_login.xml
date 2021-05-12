@@ -50,7 +50,7 @@
         android:layout_marginStart="48dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="48dp"
-        android:layout_marginBottom="64dp"
+        android:layout_marginBottom="16dp"
         android:background="#673AB7"
         android:enabled="true"
         android:text="@string/action_sign_in"
@@ -59,11 +59,33 @@
         android:textColorLink="#FFFFFF"
         android:textSize="18sp"
         app:backgroundTint="#3A7BCA"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/txt_gotoRegister"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/input_password_login"
-        app:layout_constraintVertical_bias="0.11" />
+        app:layout_constraintTop_toBottomOf="@+id/input_password_login" />
+
+    <Button
+        android:id="@+id/btn_change_lang"
+        android:layout_width="362dp"
+        android:layout_height="64dp"
+        android:layout_gravity="start"
+        android:layout_marginStart="48dp"
+        android:layout_marginLeft="48dp"
+        android:layout_marginEnd="48dp"
+        android:layout_marginRight="48dp"
+        android:layout_marginBottom="48dp"
+        android:background="#673AB7"
+        android:enabled="true"
+        android:text="@string/change_language"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        android:textColorLink="#FFFFFF"
+        android:textSize="18sp"
+        app:backgroundTint="#3A7BCA"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.51"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ProgressBar
         android:id="@+id/loading"
@@ -101,19 +123,20 @@
         android:layout_width="281dp"
         android:layout_height="94dp"
         android:layout_marginTop="4dp"
+        android:layout_marginBottom="131dp"
         android:clickable="true"
         android:enabled="true"
         android:fontFamily="monospace"
         android:gravity="center"
         android:linksClickable="false"
-        android:text="Don't have an account? Register"
+        android:text="@string/register_account"
         android:textColor="#000000"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/btn_change_lang"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_login"
-        app:layout_constraintVertical_bias="0.106" />
+        app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
