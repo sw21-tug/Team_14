@@ -2,14 +2,13 @@ package com.example.tutorly
 
 import android.app.AlertDialog
 import android.content.Intent
-import android.media.Image
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.tutorly.database.Database
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -30,13 +29,6 @@ class FilterActivity : AppCompatActivity() {
           * add possibility to get a list of selected subjects
           * add possibility to get radio button status
          */
-        availableSubjects.add(Subject(resources.getString(R.string.german), resources.getString(R.string.german_lang)))
-        availableSubjects.add(Subject(resources.getString(R.string.pyhsics), resources.getString(R.string.lear_physics)))
-        availableSubjects.add(Subject(resources.getString(R.string.english), resources.getString(R.string.learn_english)))
-        availableSubjects.add(Subject(resources.getString(R.string.maths), resources.getString(R.string.learn_maths)))
-        availableSubjects.add(Subject(resources.getString(R.string.example_subject), resources.getString(R.string.learn_example_subject)))
-        availableSubjects.add(Subject(resources.getString(R.string.example_subject), resources.getString(R.string.learn_example_subject)))
-        availableSubjects.add(Subject(resources.getString(R.string.example_subject), resources.getString(R.string.learn_example_subject)))
 
         val filterRecyclerView = findViewById<RecyclerView>(R.id.filterRecyclerView)
         filterRecyclerView.setHasFixedSize(true)
@@ -44,6 +36,8 @@ class FilterActivity : AppCompatActivity() {
         filterRecyclerView.layoutManager = LinearLayoutManager(this)
         filterRecyclerView.itemAnimator = DefaultItemAnimator()
         subjectAdapter = RecyclerViewAdapter(this, availableSubjects)
+        val database = Database()
+        database.getSubjectsList(subjectAdapter::updateSubjects)
         filterRecyclerView.adapter = subjectAdapter
 
         changeLang.setOnClickListener{

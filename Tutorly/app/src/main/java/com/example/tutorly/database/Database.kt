@@ -2,11 +2,7 @@ package com.example.tutorly.database
 
 import android.util.Log
 import com.example.tutorly.Subject
-import com.google.firebase.FirebaseError
 import com.google.firebase.database.*
-import com.google.firebase.ktx.Firebase
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.runBlocking
 
 
 class Database {
@@ -15,7 +11,7 @@ class Database {
     var reference = database.reference
     val subject_list = ArrayList<Subject>()
 
-    fun getSubjectsList(): ArrayList<Subject> {
+    fun getSubjectsList(kFunction1: (newSubjects: ArrayList<Subject>) -> Unit): ArrayList<Subject> {
         val subjects_ref = reference.child("subjects")
         val postListener = object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {

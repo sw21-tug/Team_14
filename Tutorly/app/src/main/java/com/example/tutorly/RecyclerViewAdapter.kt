@@ -33,6 +33,12 @@ class RecyclerViewAdapter(private val context: Context, private val subjects: Ar
         }
     }
 
+    fun updateSubjects(newSubjects: ArrayList<Subject>) {
+        subjects.clear()
+        subjects.addAll(newSubjects)
+        notifyDataSetChanged()
+    }
+
     fun getSubjects() : ArrayList<Subject>{
 
         return subjects

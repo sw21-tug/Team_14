@@ -19,7 +19,7 @@ class DatabaseTest : TestCase() {
     @Test
     fun testSubjectList()
     {
-        dbObj.getSubjectsList()
+        dbObj.getSubjectsList(subjectAdapter::updateSubjects)
     }
 
     @Test
