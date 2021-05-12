@@ -1,6 +1,8 @@
 package com.example.tutorly
 
 import android.Manifest
+import android.app.AlertDialog
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.widget.Button
@@ -19,6 +21,8 @@ import com.google.android.libraries.places.widget.listener.PlaceSelectionListene
 import com.google.android.libraries.places.widget.model.AutocompleteActivityMode
 import java.util.*
 import javax.net.ssl.SSLEngineResult
+import kotlin.system.exitProcess
+
 
 class TownSelection : AppCompatActivity() {
 
@@ -34,9 +38,30 @@ class TownSelection : AppCompatActivity() {
         setContentView(R.layout.activity_town_selection)
         setSupportActionBar(findViewById(R.id.titleToolbar))
 
-
+        var changeLang: Button = findViewById(R.id.btn_change_lang_town_selection)
 
         placesAutocomplete()
+
+
+        changeLang.setOnClickListener{
+            val list = arrayOf("English", "Russian")
+            val builder = AlertDialog.Builder(this@TownSelection)
+            builder.setTitle(R.string.choose_lang)
+
+            builder.setSingleChoiceItems(list, -1) { dialog, which ->
+                if (which == 0) {
+                    Translation().changeLang("default", this)
+                    recreate()
+                }
+                else if (which == 1) {
+                    Translation().changeLang("kv", this)
+                    recreate()
+                }
+                dialog.dismiss()
+            }
+            builder.show()
+        }
+
     }
 
 
@@ -48,8 +73,7 @@ class TownSelection : AppCompatActivity() {
 
         autocompleteFragment.setPlaceFields(placeFields)
 
-        autocompleteFragment.setHint("City..")
-
+        autocompleteFragment.setHint(resources.getString(R.string.city_hint))
 
         autocompleteFragment.setOnPlaceSelectedListener(object : PlaceSelectionListener {
             override fun onPlaceSelected(p0: Place) {
@@ -66,6 +90,10 @@ class TownSelection : AppCompatActivity() {
         })
     }
 
-
+    override fun onBackPressed() {
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+    }
 
 }
+
