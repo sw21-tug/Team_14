@@ -8,24 +8,39 @@ import com.google.firebase.database.*
 class Database constructor(private val reference: DatabaseReference = FirebaseDatabase.getInstance().reference)
 {
     val subject_list = ArrayList<Subject>()
+    val tutor_list = ArrayList<Tutor>()
 
     fun getSubjectsList(updateUI: (newSubjects: ArrayList<Subject>) -> Unit) {
         val subjects_ref = reference.child("subjects")
         val postListener = object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 // Get Post object and use the values to update the UI
-                for(child in dataSnapshot.children)
+                for(subject_data in dataSnapshot.children)
                 {
-                    if(child.key == null || child.value == null)
-                    {
+                    if(subject_data.key == null || subject_data.value == null)
                         continue
+                    var id = ""
+                    var desc = ""
+                    for(child in subject_data.children)
+                    {
+                        if(child.key == null || child.value == null)
+                            continue
+
+                        if(child.key == "id")
+                        {
+                            id = child.value as String
+                        }
+
+                        if(child.key == "description")
+                        {
+                            desc = child.value as String
+                        }
                     }
-                    val subject = Subject(child.key as String, child.value as String)
+                    val subject = Subject(id, subject_data.key as String, desc)
                     println("Adding: " + subject.name)
                     subject_list.add(subject)
                 }
                 updateUI(subject_list)
-
             }
 
             override fun onCancelled(databaseError: DatabaseError) {
@@ -39,7 +54,7 @@ class Database constructor(private val reference: DatabaseReference = FirebaseDa
     }
 
     fun getTutorList() {
-        TODO("Not yet implemented")
+        
     }
 
 
