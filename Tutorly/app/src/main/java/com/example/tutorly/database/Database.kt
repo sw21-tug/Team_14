@@ -5,10 +5,8 @@ import com.example.tutorly.Subject
 import com.google.firebase.database.*
 
 
-class Database {
-
-    var database : FirebaseDatabase = FirebaseDatabase.getInstance()
-    var reference = database.reference
+class Database constructor(private val reference: DatabaseReference = FirebaseDatabase.getInstance().reference)
+{
     val subject_list = ArrayList<Subject>()
 
     fun getSubjectsList(updateUI: (newSubjects: ArrayList<Subject>) -> Unit) {
@@ -25,9 +23,7 @@ class Database {
                     val subject = Subject(child.key as String, child.value as String)
                     println("Adding: " + subject.name)
                     subject_list.add(subject)
-
                 }
-
                 updateUI(subject_list)
 
             }
