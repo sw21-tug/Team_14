@@ -11,7 +11,7 @@ class Database {
     var reference = database.reference
     val subject_list = ArrayList<Subject>()
 
-    fun getSubjectsList(kFunction1: (newSubjects: ArrayList<Subject>) -> Unit): ArrayList<Subject> {
+    fun getSubjectsList(updateUI: (newSubjects: ArrayList<Subject>) -> Unit) {
         val subjects_ref = reference.child("subjects")
         val postListener = object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
@@ -28,6 +28,8 @@ class Database {
 
                 }
 
+                updateUI(subject_list)
+
             }
 
             override fun onCancelled(databaseError: DatabaseError) {
@@ -38,8 +40,6 @@ class Database {
             }
         }
         subjects_ref.addValueEventListener(postListener)
-
-        return subject_list
     }
 
     fun getTutorList() {
