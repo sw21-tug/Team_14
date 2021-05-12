@@ -53,8 +53,41 @@ class Database constructor(private val reference: DatabaseReference = FirebaseDa
         subjects_ref.addValueEventListener(postListener)
     }
 
-    fun getTutorList() {
-        
+    fun getTutorList(updateUI: (newTutors: ArrayList<Tutor>) -> Unit) {
+        val tutors_ref = reference.child("tutors")
+        val postListener = object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                // Get Post object and use the values to update the UI
+                for(tutor_data in dataSnapshot.children)
+                {
+                    if(tutor_data.key == null || tutor_data.value == null)
+                        continue
+                    val subjectIDs = ArrayList<String>()
+                    var id = tutor_data.key
+                    for(child in tutor_data.children)
+                    {
+                        if(child.key == null || child.value == null)
+                            continue
+                        subjectIDs.add(child.key as String)
+
+                    }
+                    //TODO: retrieve user data of a tutor
+                    val tutor = Tutor("Ema", "Salkic", "ema@gmail.com", "123456",
+                                       subjectIDs, "123456789")
+                    println("Adding: " + tutor)
+                    tutor_list.add(tutor)
+                }
+                updateUI(tutor_list)
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                // Getting Post failed, log a message
+                Log.println(Log.INFO, "loadPost:onCancelled",
+                    databaseError.toException().toString()
+                )
+            }
+        }
+        tutors_ref.addValueEventListener(postListener)
     }
 
 
