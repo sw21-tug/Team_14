@@ -65,17 +65,36 @@ class Database constructor(private val reference: DatabaseReference = FirebaseDa
                         continue
                     val subjectIDs = ArrayList<String>()
                     var id = tutor_data.key
-                    for(child in tutor_data.children)
+                    var email = ""
+                    var name = ""
+                    var surname = ""
+                    var phone = ""
+                    for(tutorInfo in tutor_data.children)
                     {
-                        if(child.key == null || child.value == null)
+                        if(tutorInfo.key == null || tutorInfo.value == null)
                             continue
-                        subjectIDs.add(child.key as String)
 
+                        if(tutorInfo.key == "subjects")
+                        {
+                            for(subject in tutorInfo.children)
+                            {
+                                if(subject.key == null || subject.value == null)
+                                    continue
+                                subjectIDs.add(tutorInfo.key as String)
+                                //TODO add value as level of knowledge
+                            }
+                        }
+                        if(tutorInfo.key == "name")
+                            name = tutorInfo.value as String
+                        else if(tutorInfo.key == "surname")
+                            surname = tutorInfo.value as String
+                        else if(tutorInfo.key == "email")
+                            email = tutorInfo.value as String
+                        else if(tutorInfo.key == "phone")
+                            phone = tutorInfo.value as String
                     }
-                    //TODO: retrieve user data of a tutor
-                    val tutor = Tutor("Ema", "Salkic", "ema@gmail.com", "123456",
-                                       subjectIDs, "123456789")
-                    println("Adding: " + tutor)
+                    //TODO: retrieve user password
+                    val tutor = Tutor(name, surname, email, "pass", subjectIDs, phone)
                     tutor_list.add(tutor)
                 }
                 updateUI(tutor_list)
@@ -89,6 +108,11 @@ class Database constructor(private val reference: DatabaseReference = FirebaseDa
             }
         }
         tutors_ref.addValueEventListener(postListener)
+    }
+
+    fun addTutor(user: User){
+        //val tutor = Tutor(user.name, user)
+        //TODO push to DB
     }
 
 
