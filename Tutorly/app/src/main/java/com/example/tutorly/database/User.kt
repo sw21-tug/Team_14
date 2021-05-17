@@ -21,6 +21,10 @@ open class User (_firstName : String, _lastName : String, _email : String, _pass
         userID = _userID
     }
 
+    fun getUserID (): String? {
+        return userID
+    }
+
     fun getName(): String{
         return firstName
     }

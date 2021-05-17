@@ -3,6 +3,9 @@ package com.example.tutorly.database
 import android.util.Log
 import com.example.tutorly.Subject
 import com.google.firebase.database.*
+import java.util.*
+import kotlin.collections.ArrayList
+import kotlin.collections.HashMap
 
 
 class Database constructor(private val reference: DatabaseReference = FirebaseDatabase.getInstance().reference)
@@ -110,9 +113,27 @@ class Database constructor(private val reference: DatabaseReference = FirebaseDa
         tutors_ref.addValueEventListener(postListener)
     }
 
-    fun addTutor(user: User){
-        //val tutor = Tutor(user.name, user)
-        //TODO push to DB
+    fun addTutor(tutor: Tutor){
+        val tutors_ref = reference.child("tutors")
+        val userID = tutor.getUserID()
+        if (userID != null) {
+            val tutorsSubjects = HashMap<String, Any>()
+            for(subject in tutor.subjectIDs)
+            {
+                tutorsSubjects[subject] = "level"
+            }
+            val map: HashMap<String, Any> = hashMapOf(
+                "name" to tutor.getName(),
+                "surname" to tutor.getSurname(),
+                "email" to tutor.getEmail(),
+                "phone" to tutor.phoneNumber,
+                "subjects" to tutorsSubjects
+            )
+            tutors_ref.child(userID)
+                .setValue(map)
+                .addOnSuccessListener { println("added tutor") }
+                .addOnFailureListener { println("failed to add new tutor") }
+        }
     }
 
 
