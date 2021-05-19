@@ -13,6 +13,7 @@ class Database constructor(private val reference: DatabaseReference = FirebaseDa
     val subject_list = ArrayList<Subject>()
     val tutor_list = ArrayList<Tutor>()
     lateinit var dbSubjectListener: ValueEventListener
+    lateinit var dbTutorsListener: ValueEventListener
 
     fun getSubjectsList(updateUI: (newSubjects: ArrayList<Subject>) -> Unit) {
         val subjects_ref = reference.child("subjects")
@@ -59,7 +60,7 @@ class Database constructor(private val reference: DatabaseReference = FirebaseDa
 
     fun getTutorList(updateUI: (newTutors: ArrayList<Tutor>) -> Unit) {
         val tutors_ref = reference.child("tutors")
-        val postListener = object : ValueEventListener {
+        dbTutorsListener = object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 // Get Post object and use the values to update the UI
                 for(tutor_data in dataSnapshot.children)
@@ -67,7 +68,8 @@ class Database constructor(private val reference: DatabaseReference = FirebaseDa
                     if(tutor_data.key == null || tutor_data.value == null)
                         continue
                     val subjectIDs = HashMap<String, LvlOfKnowledge>()
-                    val email = tutor_data.key as String
+                    val userID = tutor_data.key as String
+                    var email = ""
                     var name = ""
                     var surname = ""
                     var phone = ""
@@ -91,8 +93,10 @@ class Database constructor(private val reference: DatabaseReference = FirebaseDa
                             surname = tutorInfo.value as String
                         else if(tutorInfo.key == "phone")
                             phone = tutorInfo.value as String
+                        else if(tutorInfo.key == "email")
+                            email = tutorInfo.value as String
                     }
-                    val tutor = Tutor(name, surname, email, subjectIDs, phone)
+                    val tutor = Tutor(userID, name, surname, email, subjectIDs, phone)
                     tutor_list.add(tutor)
                 }
                 updateUI(tutor_list)
@@ -105,24 +109,25 @@ class Database constructor(private val reference: DatabaseReference = FirebaseDa
                 )
             }
         }
-        tutors_ref.addValueEventListener(postListener)
+        tutors_ref.addValueEventListener(dbTutorsListener)
     }
 
     fun addTutor(tutor: Tutor){
         val tutors_ref = reference.child("tutors")
-        val userEmail = tutor.email
         val tutorsSubjects = HashMap<String, LvlOfKnowledge>()
         for(subject in tutor.subjectIDs)
         {
             tutorsSubjects[subject.key] = subject.value
         }
         val map: HashMap<String, Any> = hashMapOf(
+            "email" to tutor.email,
             "name" to tutor.firstName,
             "surname" to tutor.lastName,
             "phone" to tutor.phoneNumber,
             "subjects" to tutorsSubjects
         )
-        tutors_ref.child(userEmail)
+        val userID = tutor.id
+        tutors_ref.child(userID)
             .setValue(map)
             .addOnSuccessListener { println("added tutor") }
             .addOnFailureListener { println("failed to add new tutor") }

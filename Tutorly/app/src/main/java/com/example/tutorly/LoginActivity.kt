@@ -24,6 +24,9 @@ import android.widget.Toast
 import com.example.tutorly.database.UserAutheniticator
 import kotlinx.coroutines.*
 import androidx.lifecycle.lifecycleScope
+import com.example.tutorly.database.Database
+import com.example.tutorly.database.LvlOfKnowledge
+import com.example.tutorly.database.Tutor
 import kotlinx.coroutines.GlobalScope
 import java.util.*
 
@@ -67,6 +70,7 @@ class LoginActivity : AppCompatActivity() {
         }
 
         loginButton.setOnClickListener {
+
             if(!android.util.Patterns.EMAIL_ADDRESS.matcher(inputEmail.text.toString()).matches())
             {
                 Toast.makeText(

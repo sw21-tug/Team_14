@@ -5,5 +5,5 @@ enum class LvlOfKnowledge{
 }
 
 class Tutor(
-    val firstName: String, val lastName: String, val email: String,
+    val id: String, val firstName: String, val lastName: String, val email: String,
     val subjectIDs: HashMap<String, LvlOfKnowledge>, val phoneNumber: String )
