@@ -66,9 +66,8 @@ class Database constructor(private val reference: DatabaseReference = FirebaseDa
                 {
                     if(tutor_data.key == null || tutor_data.value == null)
                         continue
-                    val subjectIDs = ArrayList<String>()
-                    var id = tutor_data.key
-                    var email = ""
+                    val subjectIDs = HashMap<String, LvlOfKnowledge>()
+                    val email = tutor_data.key as String
                     var name = ""
                     var surname = ""
                     var phone = ""
@@ -83,21 +82,17 @@ class Database constructor(private val reference: DatabaseReference = FirebaseDa
                             {
                                 if(subject.key == null || subject.value == null)
                                     continue
-                                subjectIDs.add(tutorInfo.key as String)
-                                //TODO add value as level of knowledge
+                                subjectIDs[tutorInfo.key as String] = tutorInfo.value as LvlOfKnowledge
                             }
                         }
                         if(tutorInfo.key == "name")
                             name = tutorInfo.value as String
                         else if(tutorInfo.key == "surname")
                             surname = tutorInfo.value as String
-                        else if(tutorInfo.key == "email")
-                            email = tutorInfo.value as String
                         else if(tutorInfo.key == "phone")
                             phone = tutorInfo.value as String
                     }
-                    //TODO: retrieve user password
-                    val tutor = Tutor(name, surname, email, "pass", subjectIDs, phone)
+                    val tutor = Tutor(name, surname, email, subjectIDs, phone)
                     tutor_list.add(tutor)
                 }
                 updateUI(tutor_list)
@@ -115,27 +110,21 @@ class Database constructor(private val reference: DatabaseReference = FirebaseDa
 
     fun addTutor(tutor: Tutor){
         val tutors_ref = reference.child("tutors")
-        val userID = tutor.getUserID()
-        if (userID != null) {
-            val tutorsSubjects = HashMap<String, Any>()
-            for(subject in tutor.subjectIDs)
-            {
-                tutorsSubjects[subject] = "level"
-            }
-            val map: HashMap<String, Any> = hashMapOf(
-                "name" to tutor.getName(),
-                "surname" to tutor.getSurname(),
-                "email" to tutor.getEmail(),
-                "phone" to tutor.phoneNumber,
-                "subjects" to tutorsSubjects
-            )
-            tutors_ref.child(userID)
-                .setValue(map)
-                .addOnSuccessListener { println("added tutor") }
-                .addOnFailureListener { println("failed to add new tutor") }
+        val userEmail = tutor.email
+        val tutorsSubjects = HashMap<String, LvlOfKnowledge>()
+        for(subject in tutor.subjectIDs)
+        {
+            tutorsSubjects[subject.key] = subject.value
         }
+        val map: HashMap<String, Any> = hashMapOf(
+            "name" to tutor.firstName,
+            "surname" to tutor.lastName,
+            "phone" to tutor.phoneNumber,
+            "subjects" to tutorsSubjects
+        )
+        tutors_ref.child(userEmail)
+            .setValue(map)
+            .addOnSuccessListener { println("added tutor") }
+            .addOnFailureListener { println("failed to add new tutor") }
     }
-
-
-
 }
