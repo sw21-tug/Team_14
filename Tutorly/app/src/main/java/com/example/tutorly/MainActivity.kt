@@ -15,9 +15,16 @@ class MainActivity : AppCompatActivity() {
 
         val button: Button = findViewById(R.id.btnTownSelection)
         val changeLang: Button = findViewById(R.id.btn_change_lang_main_activity)
+        val tutorslistbtn: Button = findViewById(R.id.btnTutorlist)
 
         button.setOnClickListener {
             val intent = Intent(this, TownSelection::class.java)
+            startActivity(intent);
+
+        }
+
+        tutorslistbtn.setOnClickListener {
+            val intent = Intent(this, TutorListActivity::class.java)
             startActivity(intent);
 
         }
