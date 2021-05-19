@@ -28,13 +28,16 @@ import kotlinx.coroutines.GlobalScope
 import java.util.*
 
 class TutorListActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_tutor_list)
+    }
 
     /*
-    first create a button in mainActivity to get to the TutorsListActivity
-    second create the TutorListActivity
-    third create recyclerview to show the Tutorslist in TutorslistActivity
-    https://developer.android.com/guide/topics/ui/layout/recyclerview
-     */
-
+first create a button in mainActivity to get to the TutorsListActivity
+second create the TutorListActivity
+third create recyclerview to show the Tutorslist in TutorslistActivity
+https://developer.android.com/guide/topics/ui/layout/recyclerview
+ */
 
 }
