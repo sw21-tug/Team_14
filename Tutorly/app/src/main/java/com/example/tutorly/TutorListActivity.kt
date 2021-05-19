@@ -1,36 +1,72 @@
 package com.example.tutorly
 
-import android.app.Activity
-import android.app.AlertDialog
-import android.content.Context
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
-import android.view.View
-import android.view.inputmethod.EditorInfo
-import android.widget.*
-import androidx.annotation.StringRes
-import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.findNavController
-import org.w3c.dom.Text
 
-import androidx.lifecycle.Observer
+import android.app.AlertDialog
+import android.content.Intent
+import android.media.Image
+import android.util.Log
 import android.widget.Button
-import android.widget.EditText
-import android.widget.ProgressBar
-import android.widget.Toast
-import com.example.tutorly.database.UserAutheniticator
-import kotlinx.coroutines.*
-import androidx.lifecycle.lifecycleScope
-import kotlinx.coroutines.GlobalScope
+import androidx.recyclerview.widget.DefaultItemAnimator
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import java.util.*
+import kotlin.collections.ArrayList
+
 
 class TutorListActivity : AppCompatActivity() {
+
+    lateinit var tutorsAdapter : TutorsRecyclerView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tutor_list)
+
+        val filteredTutors: ArrayList<Tutor> = ArrayList()
+        val changeLang: Button = findViewById(R.id.btn_change_lang_tutors)
+
+        //TODO retrieve Tutors from database
+
+        filteredTutors.add(Tutor("Max Mustermann","testID"))
+        filteredTutors.add(Tutor("Max Mustermann","testID1"))
+        filteredTutors.add(Tutor("Max Mustermann","testID2"))
+        filteredTutors.add(Tutor("Max Mustermann","testID3"))
+        filteredTutors.add(Tutor("Max Mustermann","testID4"))
+        filteredTutors.add(Tutor("Max Mustermann","testID5"))
+
+
+        val tutorsRecyclerView = findViewById<RecyclerView>(R.id.tutorsRecyclerView)
+        tutorsRecyclerView.setHasFixedSize(true)
+
+        tutorsRecyclerView.layoutManager = LinearLayoutManager(this)
+        tutorsRecyclerView.itemAnimator = DefaultItemAnimator()
+        tutorsAdapter = TutorsRecyclerView(this, filteredTutors)
+        tutorsRecyclerView.adapter = tutorsAdapter
+
+        changeLang.setOnClickListener{
+            val list = arrayOf("English", "Russian")
+            val builder = AlertDialog.Builder(this@TutorListActivity)
+            builder.setTitle(R.string.choose_lang)
+
+            builder.setSingleChoiceItems(list, -1) { dialog, which ->
+                if (which == 0) {
+                    Translation().changeLang("default", this)
+                    recreate()
+                }
+                else if (which == 1) {
+                    Translation().changeLang("kv", this)
+                    recreate()
+                }
+                dialog.dismiss()
+            }
+            builder.show()
+        }
+    }
+
+    override fun onBackPressed() {
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
     }
 
     /*
