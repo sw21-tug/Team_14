@@ -34,8 +34,6 @@ class TownSelection : AppCompatActivity() {
         setContentView(R.layout.activity_town_selection)
         setSupportActionBar(findViewById(R.id.titleToolbar))
 
-
-
         placesAutocomplete()
     }
 
