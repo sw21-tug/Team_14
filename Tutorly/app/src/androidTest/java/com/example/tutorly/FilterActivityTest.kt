@@ -26,14 +26,18 @@ import java.util.logging.Filter
 class FilterActivityTest : TestCase() {
 
     @get:Rule
-    var activityMain: ActivityTestRule<MainActivity> = ActivityTestRule<MainActivity>(
-            MainActivity::class.java,
+    var tutorProfileActivity : ActivityTestRule<TutorProfile> = ActivityTestRule<TutorProfile>(
+            TutorProfile::class.java,
             true,
             false)
 
     @Before
     fun initIntent() {
         Intents.init()
+
+        // change activity
+        val intent = Intent()
+        tutorProfileActivity.launchActivity(intent)
     }
 
     @After
@@ -41,49 +45,20 @@ class FilterActivityTest : TestCase() {
         Intents.release()
     }
 
-    //Test swtich to filter activity
     @Test
-    fun filterButton() {
-        //change activity
-        val intent = Intent()
-        activityMain.launchActivity(intent)
+    fun checkTitlesShown() {
 
-        //check if button visible
-        onView(withId(R.id.btnFilter)).check(matches(isDisplayed()))
-
-        // perform click
-        onView(withId(R.id.btnFilter)).perform(click())
-
-        //check if activity changed
-        intended(hasComponent(FilterActivity::class.java.name))
+        // check if titles visible
+        onView(withId(R.id.txtTutorInfo)).check(matches(isDisplayed()))
+        onView(withId(R.id.txtSubject)).check(matches(isDisplayed()))
     }
 
-    @get:Rule
-    var activityFilter: ActivityTestRule<FilterActivity> = ActivityTestRule<FilterActivity>(
-            FilterActivity::class.java,
-            true,
-            false)
-
-
-    // Test the recyclerview and its elements
     @Test
-    fun recyclerViewSelectUnselect() {
+    fun checkTitlesText() {
 
-        val intent = Intent()
-        activityFilter.launchActivity(intent)
-
-        // check if the recycler view is visible
-        onView(withId(R.id.filterRecyclerView)).check(matches(isDisplayed()))
-
-        // test select subject
-        onView(withId(R.id.filterRecyclerView)).perform(actionOnItemAtPosition<RecyclerViewAdapter.ViewHolder>(4, click()))
-
-        assertTrue(activityFilter.activity.subjectAdapter.getSubjects()[4].isSelected)
-
-        //test unselect subject
-        onView(withId(R.id.filterRecyclerView)).perform(actionOnItemAtPosition<RecyclerViewAdapter.ViewHolder>(4, click()))
-
-        assertFalse(activityFilter.activity.subjectAdapter.getSubjects()[4].isSelected)
+        // check if the text is right
+        onView(withId(R.id.txtTutorInfo)).check(matches(withText("Tutor Information")))
+        onView(withId(R.id.txtSubject)).check(matches(withText("Subjects")))
 
     }
 
