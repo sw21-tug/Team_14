@@ -7,26 +7,33 @@ import androidx.test.espresso.assertion.ViewAssertions
 import androidx.test.espresso.intent.Intents
 import androidx.test.espresso.intent.matcher.IntentMatchers
 import androidx.test.espresso.matcher.ViewMatchers
+import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.filters.SmallTest
 import androidx.test.rule.ActivityTestRule
 import junit.framework.TestCase
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
+import org.junit.runner.RunWith
 
-
+@RunWith(AndroidJUnit4::class)
+@SmallTest
 class TutorProfileTest : TestCase() {
 
-    // change the shown activity to the tutorprofile activity
     @get:Rule
-    var activityMain: ActivityTestRule<MainActivity> = ActivityTestRule<MainActivity>(
-        MainActivity::class.java,
+    var tutorProfileActivity : ActivityTestRule<TutorProfile> = ActivityTestRule<TutorProfile>(
+        TutorProfile::class.java,
         true,
         false)
 
     @Before
     fun initIntent() {
         Intents.init()
+
+        // change activity
+        val intent = Intent()
+        tutorProfileActivity.launchActivity(intent)
     }
 
     @After
@@ -35,20 +42,60 @@ class TutorProfileTest : TestCase() {
     }
 
     @Test
-    fun filterButton() {
-        //change activity
-        val intent = Intent()
-        activityMain.launchActivity(intent)
+    fun checkTitlesShown() {
 
-        //check if button visible
-        Espresso.onView(ViewMatchers.withId(R.id.btnFilter))
+        // check if titles visible
+        Espresso.onView(ViewMatchers.withId(R.id.txtTutorInfo))
             .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
+        Espresso.onView(ViewMatchers.withId(R.id.txtSubject))
+            .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
+    }
 
-        // perform click
-        Espresso.onView(ViewMatchers.withId(R.id.btnFilter)).perform(ViewActions.click())
+    @Test
+    fun checkTitlesText() {
 
-        //check if activity changed
-        Intents.intended(IntentMatchers.hasComponent(FilterActivity::class.java.name))
+        // check if the text is right
+        Espresso.onView(ViewMatchers.withId(R.id.txtTutorInfo))
+            .check(ViewAssertions.matches(ViewMatchers.withText("Tutor Information")))
+        Espresso.onView(ViewMatchers.withId(R.id.txtSubject))
+            .check(ViewAssertions.matches(ViewMatchers.withText("Subjects")))
+    }
+
+    @Test
+    fun checkTutorInformationShown() {
+
+        //check if tutor info visible
+        Espresso.onView(ViewMatchers.withId(R.id.txtTutorName))
+            .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
+        Espresso.onView(ViewMatchers.withId(R.id.txtTutorAge))
+            .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
+        Espresso.onView(ViewMatchers.withId(R.id.txtTutorGender))
+            .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
+        Espresso.onView(ViewMatchers.withId(R.id.txtTutorMail))
+            .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
+    }
+
+    @Test
+    fun checkTutorInformationText() {
+
+        //check if right text gets displayed
+        Espresso.onView(ViewMatchers.withId(R.id.txtTutorName))
+            .check(ViewAssertions.matches(ViewMatchers.withText("Name: ${TutorProfile.tutorName}")))
+
+
+
+        Espresso.onView(ViewMatchers.withId(R.id.txtTutorAge))
+            .check(ViewAssertions.matches(ViewMatchers.withText("Age: ${TutorProfile.tutorAge}")))
+
+
+
+        Espresso.onView(ViewMatchers.withId(R.id.txtTutorGender))
+            .check(ViewAssertions.matches(ViewMatchers.withText("Gender: ${TutorProfile.tutorGender}")))
+
+
+
+        Espresso.onView(ViewMatchers.withId(R.id.txtTutorMail))
+            .check(ViewAssertions.matches(ViewMatchers.withText("E-Mail: ${TutorProfile.tutorMail}")))
     }
 
 
