@@ -64,7 +64,7 @@ class TutorProfileTest : TestCase() {
     @Test
     fun checkTutorInformationShown() {
 
-        //check if tutor info visible
+        // check if tutor info visible
         Espresso.onView(ViewMatchers.withId(R.id.txtTutorName))
             .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
         Espresso.onView(ViewMatchers.withId(R.id.txtTutorAge))
@@ -78,24 +78,31 @@ class TutorProfileTest : TestCase() {
     @Test
     fun checkTutorInformationText() {
 
-        //check if right text gets displayed
+        // check if right text gets displayed
         Espresso.onView(ViewMatchers.withId(R.id.txtTutorName))
             .check(ViewAssertions.matches(ViewMatchers.withText("Name: ${TutorProfile.tutorName}")))
-
-
-
         Espresso.onView(ViewMatchers.withId(R.id.txtTutorAge))
             .check(ViewAssertions.matches(ViewMatchers.withText("Age: ${TutorProfile.tutorAge}")))
-
-
-
         Espresso.onView(ViewMatchers.withId(R.id.txtTutorGender))
             .check(ViewAssertions.matches(ViewMatchers.withText("Gender: ${TutorProfile.tutorGender}")))
-
-
-
         Espresso.onView(ViewMatchers.withId(R.id.txtTutorMail))
             .check(ViewAssertions.matches(ViewMatchers.withText("E-Mail: ${TutorProfile.tutorMail}")))
+    }
+
+    @Test
+    fun checkImageViewShown() {
+
+        // check if imageview is shown
+        Espresso.onView(ViewMatchers.withId(R.id.tutorImage))
+            .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
+    }
+
+    @Test
+    fun checkListViewShown() {
+
+        // check if listview exists
+        Espresso.onView(ViewMatchers.withId(R.id.subjectslist))
+            .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
     }
 
 
