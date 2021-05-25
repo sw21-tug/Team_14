@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="NONE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff0fdc1e-bedf-464b-a31f-7349d5133696" name="Default Changelist" comment="" />
+    <list default="true" id="ff0fdc1e-bedf-464b-a31f-7349d5133696" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/Tutorly/app/src/main/java/com/example/tutorly/TutorProfile.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Tutorly/app/src/main/java/com/example/tutorly/TutorProfile.kt" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,6 +26,7 @@
     <property name="android.sdk.path" value="$USER_HOME$/Android/Sdk" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
