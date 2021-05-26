@@ -15,10 +15,7 @@ import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.LargeTest
 import androidx.test.rule.ActivityTestRule
-import com.example.tutorly.LoginActivity
-import com.example.tutorly.MainActivity
-import com.example.tutorly.R
-import com.example.tutorly.RegisterActivity
+import com.example.tutorly.*
 import org.hamcrest.Matchers.not
 import org.junit.After
 import org.junit.Before
@@ -46,6 +43,13 @@ class LoginRegisterTest {
 
 
     @get:Rule
+
+
+    var activityRegister: ActivityTestRule<RegisterActivity> = ActivityTestRule<RegisterActivity>(
+            RegisterActivity::class.java,
+            true,
+            false)
+
     var loginActivityRule: ActivityScenarioRule<LoginActivity>
             = ActivityScenarioRule(LoginActivity::class.java)
     var registerActivityRule: ActivityScenarioRule<RegisterActivity>
@@ -126,8 +130,9 @@ class LoginRegisterTest {
     }
 
     @Test
-    fun gotoRegister() {
-        // Type text and then press the button.
+    fun gotoRegisterclick() {
+
+        activityRegister.launchActivity(Intent())
         onView(withId(R.id.txt_gotoRegister)).perform(click())
 
         // check
@@ -136,14 +141,21 @@ class LoginRegisterTest {
     }
 
     @Test
-    fun gotoLogin() {
-        // Type text and then press the button.
-        onView(withId(R.id.txt_gotoSignin)).perform(click())
+    fun gotoRegistershown() {
 
-        // check
-        ruleSwitchToLogin.launchActivity(Intent())
-        intended(hasComponent(LoginActivity::class.java.name), times(2))
+        activityLogin.launchActivity(Intent())
+        onView(withId(R.id.txt_gotoRegister)).check(matches(isDisplayed()))
+
     }
+
+    @Test
+    fun gotoRegistertext() {
+
+        activityLogin.launchActivity(Intent())
+        onView(withId(R.id.txt_gotoRegister)).check(matches(withText(R.string.register_account)))
+    }
+
+
 
 
     @Test
