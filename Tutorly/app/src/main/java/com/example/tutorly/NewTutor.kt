@@ -1,6 +1,8 @@
 package com.example.tutorly
 
+import android.app.AlertDialog
 import android.os.Bundle
+import android.widget.Button
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
@@ -22,19 +24,24 @@ class NewTutor : AppCompatActivity() {
 
         setSupportActionBar(binding.toolbar)
 
-        val navController = findNavController(R.id.nav_host_fragment_content_new_tutor)
-        appBarConfiguration = AppBarConfiguration(navController.graph)
-        setupActionBarWithNavController(navController, appBarConfiguration)
 
-        binding.fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
+        val changeLang: Button = findViewById(R.id.btn_change_lang_new_tutor)
+        changeLang.setOnClickListener {
+            val list = arrayOf("English", "Russian")
+            val builder = AlertDialog.Builder(this@NewTutor)
+            builder.setTitle(R.string.choose_lang)
+
+            builder.setSingleChoiceItems(list, -1) { dialog, which ->
+                if (which == 0) {
+                    Translation().changeLang("default", this)
+                    recreate()
+                } else if (which == 1) {
+                    Translation().changeLang("kv", this)
+                    recreate()
+                }
+                dialog.dismiss()
+            }
+            builder.show()
         }
-    }
-
-    override fun onSupportNavigateUp(): Boolean {
-        val navController = findNavController(R.id.nav_host_fragment_content_new_tutor)
-        return navController.navigateUp(appBarConfiguration)
-                || super.onSupportNavigateUp()
     }
 }
