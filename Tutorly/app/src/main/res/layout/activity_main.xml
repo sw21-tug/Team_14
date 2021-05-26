@@ -71,7 +71,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="77dp"
                 android:layout_weight="1"
-                android:text="Show Tutors"
+                android:text="@string/show_tutors"
                 android:textSize="18sp" />
         </LinearLayout>
 
