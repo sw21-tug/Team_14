@@ -87,7 +87,29 @@ class TutorlistTest {
         onView(withId(R.id.btnTutorlist)).check(matches(withText(R.string.show_tutors)))
 
     }
-    
+
+    @Test
+    fun tutorbuttonclick() {
+
+        activityTutorList.launchActivity(Intent())
+
+        // Position 4 tests scrolling too
+        onView(withId(R.id.tutorsRecyclerView)).perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerViewAdapter.ViewHolder>(4, click()))
+
+        activityTutorProfile.launchActivity(Intent())
+        intended(hasComponent(TutorProfile::class.java.name), times(2))
+
+    }
+
+    @Test
+    fun tutorbuttonshown() {
+
+        activityTutorList.launchActivity(Intent())
+
+        onView(withId(R.id.tutorsRecyclerView)).check(matches(isDisplayed()))
+
+    }
+
 
 
 
