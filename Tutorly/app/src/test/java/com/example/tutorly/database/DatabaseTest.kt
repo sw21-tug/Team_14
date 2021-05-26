@@ -49,17 +49,7 @@ class DatabaseTest : TestCase() {
 
         System.setOut(PrintStream(outContent));
 
-        //DataSnapshot mocking
-        //`when`(mockedDataSnapshot.children).thenReturn(mockedDataSnapshot)
-
         `when`(mockedReference.setValue(any())).thenReturn(mockedTask)
-        //mockedTask.addOnSuccessListener { println("added tutor") }
-        //mockedTask.addOnFailureListener { println("not added tutor") }
-        //verify(mockedTask).addOnSuccessListener { println("added tutor") }
-        //verify(mockedTask).addOnFailureListener { println("not added tutor") }
-
-        //`when`(mockedReference.setValue(any()).addOnSuccessListener { println("added tutor") })
-        //`when`(mockedReference.setValue(any()).addOnFailureListener { println("not added tutor") })
     }
 
     @After
@@ -82,15 +72,6 @@ class DatabaseTest : TestCase() {
     @Test
     fun testSubjectList()
     {
-        /*
-        doAnswer { invocation ->
-            val valueEventListener = invocation.arguments[0] as ValueEventListener
-            //when(mockedDataSnapshot.getValue(User.class)).thenReturn(testOrMockedUser)
-            valueEventListener.onDataChange(mockedDataSnapshot)
-            //valueEventListener.onCancelled(...);
-            null
-        }.`when`(mockedReference).addValueEventListener(any(ValueEventListener::class.java))
-         */
         database.getSubjectsList(::changeVar)
         database.dbSubjectListener.onDataChange(mockedDataSnapshot)
 
@@ -120,16 +101,6 @@ class DatabaseTest : TestCase() {
         assertEquals(0, testVar)
 
         testVar = 1
-    }
-
-    @Test
-    fun testAddingTutor() {
-        val hashmap = hashMapOf("German" to LvlOfKnowledge.MATURA, "English" to LvlOfKnowledge.SCHOOL, "Maths" to LvlOfKnowledge.UNIVERSITY)
-        val tutor = Tutor("3", "hai", "uzg", "1@6.4", hashmap, "147801")
-        //database.addTutor(tutor)
-        // TODO find a way to solve this lol
-
-        assertTrue(outContent.toString().equals("added tutor\n") || outContent.toString().equals("not added tutor\n"))
     }
 }
 

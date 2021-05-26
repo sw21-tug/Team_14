@@ -3,9 +3,9 @@ package com.example.tutorly.database
 import android.util.Log
 import com.example.tutorly.Subject
 import com.google.firebase.database.*
-import java.util.*
-import kotlin.collections.ArrayList
-import kotlin.collections.HashMap
+import javax.inject.Singleton
+
+
 
 
 class Database constructor(private val reference: DatabaseReference = FirebaseDatabase.getInstance().reference)

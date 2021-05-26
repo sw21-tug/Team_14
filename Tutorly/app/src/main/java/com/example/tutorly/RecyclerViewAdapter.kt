@@ -72,22 +72,4 @@ class RecyclerViewAdapter(private val context: Context, private val subjects: Ar
     override fun getItemCount(): Int {
         return subjects.size
     }
-
-
-    /*
-    fun deleteItem(index: Int): String {
-        val subject = subjects[index]
-
-        subjects.removeAt(index)
-        notifyDataSetChanged()
-
-        return  subject
-    }
-
-    fun insertItem(subject: String)
-    {
-        subjects.add(subject);
-        notifyDataSetChanged()
-    }
-    */
 }

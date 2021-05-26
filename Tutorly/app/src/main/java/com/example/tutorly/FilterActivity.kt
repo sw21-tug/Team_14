@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tutorly.database.Database
+import com.example.tutorly.database.DatabaseHolder
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -23,12 +24,6 @@ class FilterActivity : AppCompatActivity() {
 
         val availableSubjects: ArrayList<Subject> = ArrayList()
         val changeLang: Button = findViewById(R.id.btn_change_lang_filter)
-        /*
-        TODO:
-          * retrieve subjects from database!!!
-          * add possibility to get a list of selected subjects
-          * add possibility to get radio button status
-         */
 
         val filterRecyclerView = findViewById<RecyclerView>(R.id.filterRecyclerView)
         filterRecyclerView.setHasFixedSize(true)
@@ -36,7 +31,7 @@ class FilterActivity : AppCompatActivity() {
         filterRecyclerView.layoutManager = LinearLayoutManager(this)
         filterRecyclerView.itemAnimator = DefaultItemAnimator()
         subjectAdapter = RecyclerViewAdapter(this, availableSubjects)
-        val database = Database()
+        val database = DatabaseHolder.database
         database.getSubjectsList(subjectAdapter::updateSubjects)
         filterRecyclerView.adapter = subjectAdapter
 
