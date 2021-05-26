@@ -44,6 +44,10 @@ class LoginRegisterTest {
 
     @get:Rule
 
+    var activityLogin: ActivityTestRule<LoginActivity> = ActivityTestRule<LoginActivity>(
+            LoginActivity::class.java,
+            true,
+            false)
 
     var activityRegister: ActivityTestRule<RegisterActivity> = ActivityTestRule<RegisterActivity>(
             RegisterActivity::class.java,
@@ -155,7 +159,31 @@ class LoginRegisterTest {
         onView(withId(R.id.txt_gotoRegister)).check(matches(withText(R.string.register_account)))
     }
 
+    @Test
+    fun gotoLoginclick() {
 
+        activityRegister.launchActivity(Intent())
+        onView(withId(R.id.txt_gotoSignin)).perform(click())
+
+        // check
+        ruleSwitchToLogin.launchActivity(Intent())
+        intended(hasComponent(LoginActivity::class.java.name), times(2))
+    }
+
+    @Test
+    fun gotoLoginshown() {
+
+        activityRegister.launchActivity(Intent())
+        onView(withId(R.id.txt_gotoSignin)).check(matches(isDisplayed()))
+
+    }
+
+    @Test
+    fun gotoLogintext() {
+
+        activityRegister.launchActivity(Intent())
+        onView(withId(R.id.txt_gotoSignin)).check(matches(withText(R.string.have_account)))
+    }
 
 
     @Test
