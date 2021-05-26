@@ -33,6 +33,17 @@ class RecyclerViewAdapter(private val context: Context, private val subjects: Ar
         }
     }
 
+    fun updateSubjects(newSubjects: ArrayList<Subject>) {
+        subjects.clear()
+        subjects.addAll(newSubjects)
+        notifyDataSetChanged()
+    }
+
+    fun getSubjects() : ArrayList<Subject>{
+
+        return subjects
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.filter_cardview_layout, parent, false)
         holder = ViewHolder(view)
@@ -61,22 +72,4 @@ class RecyclerViewAdapter(private val context: Context, private val subjects: Ar
     override fun getItemCount(): Int {
         return subjects.size
     }
-
-
-    /*
-    fun deleteItem(index: Int): String {
-        val subject = subjects[index]
-
-        subjects.removeAt(index)
-        notifyDataSetChanged()
-
-        return  subject
-    }
-
-    fun insertItem(subject: String)
-    {
-        subjects.add(subject);
-        notifyDataSetChanged()
-    }
-    */
 }
