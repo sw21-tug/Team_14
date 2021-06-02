@@ -63,16 +63,14 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/btnTutorlist"
-                android:layout_width="wrap_content"
-                android:layout_height="77dp"
-                android:layout_weight="1"
-                android:text="@string/show_tutors"
-                android:textSize="18sp" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/tutorsRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scrollbars="vertical" />
         </LinearLayout>
 
     </LinearLayout>

@@ -42,10 +42,10 @@ class TutorlistTest {
             true,
             false)
 
-    var activityTutorProfile: ActivityTestRule<TutorProfile> = ActivityTestRule<TutorProfile>(
+    /*var activityTutorProfile: ActivityTestRule<TutorProfile> = ActivityTestRule<TutorProfile>(
             TutorProfile::class.java,
             true,
-            false)
+            false)*/
 
 
 
@@ -59,7 +59,7 @@ class TutorlistTest {
         Intents.release()
     }
 
-    @Test
+    /*@Test
     fun tutorlistbuttonclick() {
 
         activityMain.launchActivity(Intent())
@@ -86,9 +86,9 @@ class TutorlistTest {
 
         onView(withId(R.id.btnTutorlist)).check(matches(withText(R.string.show_tutors)))
 
-    }
+    }*/
 
-    @Test
+    /*@Test
     fun tutorbuttonclick() {
 
         activityTutorList.launchActivity(Intent())
@@ -99,7 +99,7 @@ class TutorlistTest {
         activityTutorProfile.launchActivity(Intent())
         intended(hasComponent(TutorProfile::class.java.name), times(2))
 
-    }
+    }*/
 
     @Test
     fun tutorbuttonshown() {

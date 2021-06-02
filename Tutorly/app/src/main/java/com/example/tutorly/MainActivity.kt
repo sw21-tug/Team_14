@@ -6,16 +6,42 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.DefaultItemAnimator
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import kotlin.system.exitProcess
 
 class MainActivity : AppCompatActivity() {
+
+    lateinit var tutorsAdapter : TutorsRecyclerView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        val filteredTutors: ArrayList<Tutor> = ArrayList()
+
+        //TODO retrieve Tutors from database
+
+        filteredTutors.add(Tutor("Max Mustermann","testID"))
+        filteredTutors.add(Tutor("Max Mustermann","testID1"))
+        filteredTutors.add(Tutor("Max Mustermann","testID2"))
+        filteredTutors.add(Tutor("Max Mustermann","testID3"))
+        filteredTutors.add(Tutor("Max Mustermann","testID4"))
+        filteredTutors.add(Tutor("Max Mustermann","testID5"))
+
+
+        val tutorsRecyclerView = findViewById<RecyclerView>(R.id.tutorsRecyclerView)
+        tutorsRecyclerView.setHasFixedSize(true)
+
+        tutorsRecyclerView.layoutManager = LinearLayoutManager(this)
+        tutorsRecyclerView.itemAnimator = DefaultItemAnimator()
+        tutorsAdapter = TutorsRecyclerView(this, filteredTutors)
+        tutorsRecyclerView.adapter = tutorsAdapter
+
         val button: Button = findViewById(R.id.btnTownSelection)
         val changeLang: Button = findViewById(R.id.btn_change_lang_main_activity)
-        val tutorslistbtn: Button = findViewById(R.id.btnTutorlist)
+
 
         button.setOnClickListener {
             val intent = Intent(this, TownSelection::class.java)
@@ -23,11 +49,6 @@ class MainActivity : AppCompatActivity() {
 
         }
 
-        tutorslistbtn.setOnClickListener {
-            val intent = Intent(this, TutorListActivity::class.java)
-            startActivity(intent);
-
-        }
 
         changeLang.setOnClickListener {
             val list = arrayOf("English", "Russian")
