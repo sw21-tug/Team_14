@@ -21,9 +21,9 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.Toast
-import com.example.tutorly.database.UserAutheniticator
 import kotlinx.coroutines.*
 import androidx.lifecycle.lifecycleScope
+import com.example.tutorly.database.*
 import kotlinx.coroutines.GlobalScope
 import java.util.*
 
@@ -67,12 +67,13 @@ class LoginActivity : AppCompatActivity() {
         }
 
         loginButton.setOnClickListener {
+
             if(!android.util.Patterns.EMAIL_ADDRESS.matcher(inputEmail.text.toString()).matches())
             {
                 Toast.makeText(
-                        this@LoginActivity,
-                        "Please enter valid email!",
-                        Toast.LENGTH_SHORT
+                    this@LoginActivity,
+                    "Please enter valid email!",
+                    Toast.LENGTH_SHORT
                 ).show()
                 return@setOnClickListener
             }
@@ -80,9 +81,9 @@ class LoginActivity : AppCompatActivity() {
             if (inputPassword.text.toString().trim{it <= ' '}.length < 6)
             {
                 Toast.makeText(
-                        this@LoginActivity,
-                        "Please enter valid password with length greater 6!",
-                        Toast.LENGTH_SHORT
+                    this@LoginActivity,
+                    "Please enter valid password with length greater 6!",
+                    Toast.LENGTH_SHORT
                 ).show()
 
                 return@setOnClickListener
@@ -97,16 +98,16 @@ class LoginActivity : AppCompatActivity() {
                         startActivity(intent)
                     } ?: run {
                         Toast.makeText(
-                                this@LoginActivity,
-                                "Login failed!",
-                                Toast.LENGTH_SHORT
+                            this@LoginActivity,
+                            "Login failed!",
+                            Toast.LENGTH_SHORT
                         ).show()
                     }
                 } catch (e: Exception) {
                     Toast.makeText(
-                            this@LoginActivity,
-                            "Login failed!",
-                            Toast.LENGTH_SHORT
+                        this@LoginActivity,
+                        "Login failed!",
+                        Toast.LENGTH_SHORT
                     ).show()
                 }
 
@@ -123,4 +124,4 @@ class LoginActivity : AppCompatActivity() {
         res.updateConfiguration(conf, dm)
     }
 
-}  
+}
