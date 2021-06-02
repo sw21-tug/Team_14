@@ -9,21 +9,15 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
-import com.example.tutorly.databinding.ActivityNewTutorBinding
 
 class NewTutor : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
-    private lateinit var binding: ActivityNewTutorBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = ActivityNewTutorBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-
-        setSupportActionBar(binding.toolbar)
-
+        setContentView(R.layout.activity_new_tutor)
 
         val changeLang: Button = findViewById(R.id.btn_change_lang_new_tutor)
         changeLang.setOnClickListener {
