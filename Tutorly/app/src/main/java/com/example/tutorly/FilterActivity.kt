@@ -3,12 +3,14 @@ package com.example.tutorly
 import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
+import android.widget.RadioButton
+import android.widget.RadioGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.tutorly.database.Database
 import com.example.tutorly.database.DatabaseHolder
 import java.util.*
 import kotlin.collections.ArrayList
@@ -53,6 +55,11 @@ class FilterActivity : AppCompatActivity() {
             }
             builder.show()
         }
+
+        
+        var radioGroup = findViewById<RadioGroup>(R.id.filterDifficultyRadioGroup)
+        var defaultRadioButton = radioGroup.findViewById<RadioButton>(R.id.rbUniversity)
+        defaultRadioButton.isChecked = true
     }
 
     override fun onBackPressed() {

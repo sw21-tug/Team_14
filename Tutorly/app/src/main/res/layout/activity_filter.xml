@@ -19,25 +19,28 @@
             android:orientation="horizontal">
 
             <RadioButton
+                android:id="@+id/rbSchool"
                 android:layout_width="0dp"
-                android:layout_weight=".333"
                 android:layout_height="wrap_content"
+                android:layout_weight=".333"
                 android:buttonTint="@color/radioButtonTint"
                 android:text="@string/filterRadioBtnLvl1" />
 
             <RadioButton
+                android:id="@+id/rbAlevel"
                 android:layout_width="0dp"
-                android:layout_weight=".333"
                 android:layout_height="wrap_content"
+                android:layout_weight=".333"
                 android:buttonTint="@color/radioButtonTint"
                 android:text="@string/filterRadioBtnLvl2" />
 
             <RadioButton
+                android:id="@+id/rbUniversity"
                 android:layout_width="0dp"
-                android:layout_weight=".333"
                 android:layout_height="wrap_content"
+                android:layout_weight=".333"
                 android:buttonTint="@color/radioButtonTint"
-                android:checked="true"
+                android:checked="false"
                 android:text="@string/filterRadioBtnLvl3" />
 
         </RadioGroup>
