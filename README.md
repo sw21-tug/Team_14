@@ -73,3 +73,47 @@ Connected the app together: https://github.com/sw21-tug/Team_14/issues/21
 Review of the whole current version of the application.
 
 
+
+### Week's activity (12.5.2021): Sprint 3
+
+After first release, developers working on the tasks for next sprint:
+
+Finishing the database for the app: https://github.com/sw21-tug/Team_14/issues/11 
+
+Opening the tutors profile: https://github.com/sw21-tug/Team_14/issues/6
+
+Having a list of all the tutors who match the query: https://github.com/sw21-tug/Team_14/issues/5
+
+From the sprint 3 we assign only three issues, because of the lack of developers.
+One developer remains as helper. 
+
+### Week's activity (19.5.2021): Sprint 3 end 
+
+Developers finishing implementing these tasks:
+
+Finishing the database for the app: https://github.com/sw21-tug/Team_14/issues/11 
+
+Opening the tutors profile: https://github.com/sw21-tug/Team_14/issues/6
+
+Having a list of all the tutors who match the query: https://github.com/sw21-tug/Team_14/issues/5
+
+
+
+
+### Week's activity (26.5.2021): Sprint 4
+
+Developers finishing implementing these tasks:
+
+Connecting the database with everything else / the whole app: https://github.com/sw21-tug/Team_14/issues/11 
+
+Last details on: Opening the tutors profile: https://github.com/sw21-tug/Team_14/issues/6
+
+Last details on: Having a list of all the tutors who match the query: https://github.com/sw21-tug/Team_14/issues/5
+
+
+### Week's activity (02.6.2021): Sprint 4
+
+Developers finishing the implementation, merging everything and preparing for the last relase.
+
+
+
