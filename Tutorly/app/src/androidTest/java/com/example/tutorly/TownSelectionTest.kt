@@ -79,5 +79,12 @@ class TownSelectionTest {
                 .check(matches(withText(validCity)))
 
     }*/
+    /*@Test
+    fun cityTest()
+    {
+        onPlaceSelected()
+    }*/
+
+
 
 }

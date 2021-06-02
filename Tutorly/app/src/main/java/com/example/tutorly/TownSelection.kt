@@ -11,6 +11,7 @@ import android.widget.Toast
 import android.widget.Toolbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
+import com.example.tutorly.database.Database
 import com.google.android.gms.common.api.Status
 import com.google.android.libraries.places.api.Places
 import com.google.android.libraries.places.api.model.Place
@@ -31,8 +32,6 @@ class TownSelection : AppCompatActivity() {
     lateinit var placesClient:PlacesClient
     private var placeFields = listOf(Place.Field.ID, Place.Field.NAME, Place.Field.ADDRESS)
 
-    //lateinit var placesClient:PlacesClient
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_town_selection)
@@ -41,7 +40,6 @@ class TownSelection : AppCompatActivity() {
         var changeLang: Button = findViewById(R.id.btn_change_lang_town_selection)
 
         placesAutocomplete()
-
 
         changeLang.setOnClickListener{
             val list = arrayOf("English", "Russian")
@@ -77,7 +75,6 @@ class TownSelection : AppCompatActivity() {
 
         autocompleteFragment.setOnPlaceSelectedListener(object : PlaceSelectionListener {
             override fun onPlaceSelected(p0: Place) {
-                //Log.i(TAG, "Place: ${place.name}, ${place.id}")
                 Toast.makeText(this@TownSelection, "You have selected "+p0.address, Toast.LENGTH_SHORT).show()
                 val text = findViewById<TextView>(R.id.textView)
                 text.setText(p0.address)
