@@ -38,17 +38,6 @@ class UserAutheniticator : Activity() {
     {
         userAusthenticator.signInWithEmailAndPassword(email, password).await()
         return userAusthenticator.currentUser ?: throw Exception("login-error")
-        /*var result : Boolean = false
-
-       userAusthenticator.signInWithEmailAndPassword(email, password).addOnCompleteListener()
-       {
-            task ->
-            result = task.isSuccessful
-            println(result.toString())
-        }
-        return userAusthenticator.isSuccessful
-        println(result.toString())
-        return result;*/
     }
 
     fun getCurrentUser(): FirebaseUser? {
