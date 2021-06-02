@@ -12,6 +12,7 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.example.tutorly.database.Tutor
 import com.google.android.material.card.MaterialCardView
 
 class TutorsRecyclerView(private val context: Context, private val tutors: ArrayList<Tutor>) : RecyclerView.Adapter<TutorsRecyclerView.ViewHolder>() {
@@ -36,6 +37,12 @@ class TutorsRecyclerView(private val context: Context, private val tutors: Array
         return tutors
     }
 
+    fun updateTutors(newTutors: ArrayList<Tutor>) {
+        tutors.clear()
+        tutors.addAll(newTutors)
+        notifyDataSetChanged()
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.tutors_list_layout, parent, false)
         holder = ViewHolder(view)
@@ -44,7 +51,8 @@ class TutorsRecyclerView(private val context: Context, private val tutors: Array
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.tutorNameView.text = tutors[position].tutor_name
+        val name : String = tutors[position].firstName + " " + tutors[position].lastName
+        holder.tutorNameView.text = name
         holder.tutorImage.setImageResource(R.drawable.ic_launcher_foreground)
         holder.cardView.setOnClickListener {view: View ->
                 // TODO get to information activity of the tutor

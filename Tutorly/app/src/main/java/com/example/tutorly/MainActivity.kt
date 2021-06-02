@@ -9,6 +9,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.tutorly.database.DatabaseHolder
+import com.example.tutorly.database.Tutor
 import kotlin.system.exitProcess
 
 class MainActivity : AppCompatActivity() {
@@ -21,15 +23,6 @@ class MainActivity : AppCompatActivity() {
 
         val filteredTutors: ArrayList<Tutor> = ArrayList()
 
-        //TODO retrieve Tutors from database
-
-        filteredTutors.add(Tutor("Max Mustermann","testID"))
-        filteredTutors.add(Tutor("Max Mustermann","testID1"))
-        filteredTutors.add(Tutor("Max Mustermann","testID2"))
-        filteredTutors.add(Tutor("Max Mustermann","testID3"))
-        filteredTutors.add(Tutor("Max Mustermann","testID4"))
-        filteredTutors.add(Tutor("Max Mustermann","testID5"))
-
 
         val tutorsRecyclerView = findViewById<RecyclerView>(R.id.tutorsRecyclerView)
         tutorsRecyclerView.setHasFixedSize(true)
@@ -37,6 +30,8 @@ class MainActivity : AppCompatActivity() {
         tutorsRecyclerView.layoutManager = LinearLayoutManager(this)
         tutorsRecyclerView.itemAnimator = DefaultItemAnimator()
         tutorsAdapter = TutorsRecyclerView(this, filteredTutors)
+        val database = DatabaseHolder.database
+        database.getTutorList(tutorsAdapter::updateTutors)
         tutorsRecyclerView.adapter = tutorsAdapter
 
         val button: Button = findViewById(R.id.btnTownSelection)
