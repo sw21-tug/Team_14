@@ -12,12 +12,14 @@ import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tutorly.database.DatabaseHolder
+import com.example.tutorly.database.LvlOfKnowledge
 import java.util.*
 import kotlin.collections.ArrayList
 
 
 class FilterActivity : AppCompatActivity() {
 
+    var selected_level_knowledge: LvlOfKnowledge = LvlOfKnowledge.UNIVERSITY
     lateinit var subjectAdapter : RecyclerViewAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -63,17 +65,27 @@ class FilterActivity : AppCompatActivity() {
 
         var btnDone = findViewById<Button>(R.id.btnDone)
 
-        btnDone.setOnClickListener{
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
+        radioGroup.setOnCheckedChangeListener { group, checkedId ->
+            var selectedId = findViewById<RadioButton>(checkedId)
+            selected_level_knowledge = LvlOfKnowledge.valueOf(selectedId.text as String)
         }
+        btnDone.setOnClickListener{
+            startMainActivity()
+        }
+    }
 
+
+    fun startMainActivity () {
+        //TODO: add list of selected things
+        //val selectedData = FilterData(selected_level_knowledge,)
+        val intent = Intent(this, MainActivity::class.java)
+        //intent.putExtra("filter", null)
+        startActivity(intent)
 
     }
 
     override fun onBackPressed() {
-        val intent = Intent(this, MainActivity::class.java)
-        startActivity(intent)
+        startMainActivity()
     }
 
 
