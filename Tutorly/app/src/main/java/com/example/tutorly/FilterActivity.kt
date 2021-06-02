@@ -56,10 +56,19 @@ class FilterActivity : AppCompatActivity() {
             builder.show()
         }
 
-        
+
         var radioGroup = findViewById<RadioGroup>(R.id.filterDifficultyRadioGroup)
         var defaultRadioButton = radioGroup.findViewById<RadioButton>(R.id.rbUniversity)
         defaultRadioButton.isChecked = true
+
+        var btnDone = findViewById<Button>(R.id.btnDone)
+
+        btnDone.setOnClickListener{
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
+
+
     }
 
     override fun onBackPressed() {
