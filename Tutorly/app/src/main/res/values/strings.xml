@@ -46,7 +46,7 @@
     <string name="subject">Subject</string>
     <string name="german">German</string>
     <string name="german_lang">German Language</string>
-    <string name="pyhsics">Physics</string>
+    <string name="physics">Physics</string>
     <string name="lear_physics">Learn Physics</string>
     <string name="english">English</string>
     <string name="learn_english">Learn English</string>
@@ -57,5 +57,7 @@
     <string name="city_hint">City</string>
     <string name="lang_short">EN</string>
     <string name="show_tutors">Show Tutors</string>
+    <string name="available_tutors">Available tutors</string>
+    <string name="done">Done</string>
 
 </resources>
