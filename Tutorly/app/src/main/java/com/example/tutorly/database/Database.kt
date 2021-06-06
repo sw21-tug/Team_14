@@ -2,6 +2,7 @@ package com.example.tutorly.database
 
 import android.util.Log
 import com.example.tutorly.Subject
+import com.example.tutorly.Translation
 import com.google.firebase.database.*
 import kotlin.reflect.KFunction1
 
@@ -40,6 +41,7 @@ class Database constructor(private val reference: DatabaseReference = FirebaseDa
                         }
                     }
                     val subject = Subject(id, subject_data.key as String, desc)
+                    println("Check: " + Translation.locale)
                     println("Adding: " + subject.name)
                     subject_list.add(subject)
                 }
