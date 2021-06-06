@@ -12,7 +12,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="204dp"
+        android:layout_marginTop="80dp"
         android:layout_marginEnd="24dp"
         android:hint="@string/prompt_email"
         android:inputType="textEmailAddress"
@@ -22,14 +22,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/titleText" />
 
     <EditText
         android:id="@+id/input_password_login"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
         android:layout_marginEnd="24dp"
         android:hint="@string/prompt_password"
         android:imeActionLabel="@string/action_sign_in_short"
@@ -48,9 +47,8 @@
         android:layout_height="64dp"
         android:layout_gravity="start"
         android:layout_marginStart="48dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="28dp"
         android:layout_marginEnd="48dp"
-        android:layout_marginBottom="16dp"
         android:background="#673AB7"
         android:enabled="true"
         android:text="@string/action_sign_in"
@@ -59,8 +57,8 @@
         android:textColorLink="#FFFFFF"
         android:textSize="18sp"
         app:backgroundTint="#3A7BCA"
-        app:layout_constraintBottom_toTopOf="@+id/txt_gotoRegister"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.51"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/input_password_login" />
 
@@ -73,7 +71,6 @@
         android:layout_marginLeft="48dp"
         android:layout_marginEnd="48dp"
         android:layout_marginRight="48dp"
-        android:layout_marginBottom="48dp"
         android:background="#673AB7"
         android:enabled="true"
         android:text="@string/change_language"
@@ -107,12 +104,12 @@
         android:id="@+id/titleText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="45dp"
         android:fontFamily="monospace"
         android:text="Tutorly"
         android:textColor="#000000"
         android:textSize="36sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/input_username_login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -122,8 +119,7 @@
         android:id="@+id/txt_gotoRegister"
         android:layout_width="281dp"
         android:layout_height="94dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginBottom="131dp"
+        android:layout_marginTop="8dp"
         android:clickable="true"
         android:enabled="true"
         android:fontFamily="monospace"
@@ -136,7 +132,6 @@
         app:layout_constraintBottom_toTopOf="@+id/btn_change_lang"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_login"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_login" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

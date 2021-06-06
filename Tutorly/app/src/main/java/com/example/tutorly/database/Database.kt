@@ -3,9 +3,7 @@ package com.example.tutorly.database
 import android.util.Log
 import com.example.tutorly.Subject
 import com.google.firebase.database.*
-import javax.inject.Singleton
-
-
+import kotlin.reflect.KFunction1
 
 
 class Database constructor(private val reference: DatabaseReference = FirebaseDatabase.getInstance().reference)
@@ -46,6 +44,7 @@ class Database constructor(private val reference: DatabaseReference = FirebaseDa
                     subject_list.add(subject)
                 }
                 updateUI(subject_list)
+                subject_list.clear()
             }
 
             override fun onCancelled(databaseError: DatabaseError) {
@@ -84,7 +83,7 @@ class Database constructor(private val reference: DatabaseReference = FirebaseDa
                             {
                                 if(subject.key == null || subject.value == null)
                                     continue
-                                subjectIDs[tutorInfo.key as String] = tutorInfo.value as LvlOfKnowledge
+                                subjectIDs[subject.key as String] = LvlOfKnowledge.valueOf(subject.value.toString())
                             }
                         }
                         if(tutorInfo.key == "name")
@@ -100,6 +99,7 @@ class Database constructor(private val reference: DatabaseReference = FirebaseDa
                     tutor_list.add(tutor)
                 }
                 updateUI(tutor_list)
+                tutor_list.clear()
             }
 
             override fun onCancelled(databaseError: DatabaseError) {
