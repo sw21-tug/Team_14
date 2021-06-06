@@ -21,6 +21,7 @@ class FilterActivity : AppCompatActivity() {
 
     var selected_level_knowledge: LvlOfKnowledge = LvlOfKnowledge.UNIVERSITY
     lateinit var subjectAdapter : RecyclerViewAdapter
+    lateinit var filterData : FilterData;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -69,6 +70,7 @@ class FilterActivity : AppCompatActivity() {
             var selectedId = findViewById<RadioButton>(checkedId)
             selected_level_knowledge = LvlOfKnowledge.valueOf(selectedId.text as String)
         }
+
         btnDone.setOnClickListener{
             startMainActivity()
         }
@@ -77,9 +79,10 @@ class FilterActivity : AppCompatActivity() {
 
     fun startMainActivity () {
         //TODO: add list of selected things
-        //val selectedData = FilterData(selected_level_knowledge,)
+        filterData = FilterData(selected_level_knowledge, subjectAdapter.getSelectedSubjects())
         val intent = Intent(this, MainActivity::class.java)
-        //intent.putExtra("filter", null)
+        intent.putExtra("filterLok", selected_level_knowledge)
+        intent.putExtra("filterSub", subjectAdapter.getSelectedSubjects())
         startActivity(intent)
 
     }
