@@ -1,5 +1,6 @@
 package com.example.tutorly
 
+import android.app.Activity
 import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
@@ -19,7 +20,8 @@ import kotlin.collections.ArrayList
 
 class FilterActivity : AppCompatActivity() {
 
-    var selected_level_knowledge: LvlOfKnowledge = LvlOfKnowledge.UNIVERSITY
+    //var selected_level_knowledge: LvlOfKnowledge = LvlOfKnowledge.University
+    var selected_level_knowledge : String = "University"
     lateinit var subjectAdapter : RecyclerViewAdapter
     lateinit var filterData : FilterData;
 
@@ -68,7 +70,7 @@ class FilterActivity : AppCompatActivity() {
 
         radioGroup.setOnCheckedChangeListener { group, checkedId ->
             var selectedId = findViewById<RadioButton>(checkedId)
-            selected_level_knowledge = LvlOfKnowledge.valueOf(selectedId.text as String)
+            selected_level_knowledge = selectedId.text as String
         }
 
         btnDone.setOnClickListener{
@@ -79,12 +81,11 @@ class FilterActivity : AppCompatActivity() {
 
     fun startMainActivity () {
         //TODO: add list of selected things
-        filterData = FilterData(selected_level_knowledge, subjectAdapter.getSelectedSubjects())
         val intent = Intent(this, MainActivity::class.java)
         intent.putExtra("filterLok", selected_level_knowledge)
         intent.putExtra("filterSub", subjectAdapter.getSelectedSubjects())
-        startActivity(intent)
-
+        setResult(Activity.RESULT_OK, intent)
+        finish()
     }
 
     override fun onBackPressed() {
