@@ -1,7 +1,7 @@
 package com.example.tutorly.database
 
 enum class LvlOfKnowledge{
-    SCHOOL, MATURA, UNIVERSITY
+    School, Matura, University
 }
 
 class Tutor(
