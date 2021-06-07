@@ -58,5 +58,6 @@
     <string name="lang_short">EN</string>
     <string name="title_activity_new_tutor">Become a Teaching Assistant</string>
     <string name="tutor_phone_number">Phone Number</string>
+    <string name="btnApply">Apply</string>
 
 </resources>
