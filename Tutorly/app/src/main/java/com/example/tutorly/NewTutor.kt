@@ -9,17 +9,37 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.recyclerview.widget.DefaultItemAnimator
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.tutorly.database.DatabaseHolder
 
 class NewTutor : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
+    lateinit var subjectAdapterTutor : RecyclerViewAdapter
 
-    
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_new_tutor)
         setSupportActionBar(findViewById(R.id.titleToolbar))
+
+        val availableSubjects: ArrayList<Subject> = ArrayList()
+
+        val newTutorRecyclerView = findViewById<RecyclerView>(R.id.newTutorRecyclerView)
+        newTutorRecyclerView.setHasFixedSize(true)
+
+        newTutorRecyclerView.layoutManager = LinearLayoutManager(this)
+        newTutorRecyclerView.itemAnimator = DefaultItemAnimator()
+
+
+        subjectAdapterTutor = RecyclerViewAdapter(this, availableSubjects)
+
+        val database = DatabaseHolder.database
+        database.getSubjectsList(subjectAdapterTutor::updateSubjects)
+        newTutorRecyclerView.adapter = subjectAdapterTutor
 
         val changeLang: Button = findViewById(R.id.btn_change_lang_new_tutor)
         changeLang.setOnClickListener {
