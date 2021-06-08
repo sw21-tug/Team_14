@@ -26,6 +26,7 @@
     <string name="action_register">регистр</string>
     <string name="town_selection">выбор города</string>
     <string name="change_language">изменить язык</string>
+    <string name="filterDone">гото́вый</string>
     <string name="register_account">Нет учетной записи? регистр</string>
     <string name="have_account">Уже есть аккаунт? Войти</string>
     <string name="subject">предмет</string>
