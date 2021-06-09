@@ -27,9 +27,9 @@ class FilterActivityTest : TestCase() {
 
     @get:Rule
     var activityMain: ActivityTestRule<MainActivity> = ActivityTestRule<MainActivity>(
-            MainActivity::class.java,
-            true,
-            false)
+        MainActivity::class.java,
+        true,
+        false)
 
     @Before
     fun initIntent() {
@@ -60,9 +60,9 @@ class FilterActivityTest : TestCase() {
 
     @get:Rule
     var activityFilter: ActivityTestRule<FilterActivity> = ActivityTestRule<FilterActivity>(
-            FilterActivity::class.java,
-            true,
-            false)
+        FilterActivity::class.java,
+        true,
+        false)
 
 
     // Test the recyclerview and its elements
@@ -85,6 +85,6 @@ class FilterActivityTest : TestCase() {
 
         assertFalse(activityFilter.activity.subjectAdapter.getSubjects()[4].isSelected)
 
-    }
+        }
 
-}
+    }

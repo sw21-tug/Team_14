@@ -3,7 +3,7 @@ package com.example.tutorly.database
 import android.media.Image
 
 enum class LvlOfKnowledge{
-    SCHOOL, MATURA, UNIVERSITY
+    School, Matura, University
 }
 
 class Tutor(
