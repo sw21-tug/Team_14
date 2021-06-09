@@ -7,7 +7,7 @@
     android:background="#D1E3FF"
     tools:context=".TownSelection">
 
-    <androidx.appcompat.widget.Toolbar
+    <!--<androidx.appcompat.widget.Toolbar
         android:id="@+id/titleToolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
@@ -15,9 +15,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:popupTheme="@style/Theme.Tutorly.PopupOverlay" />
+        app:popupTheme="@style/Theme.Tutorly.PopupOverlay" />-->
 
-    <android.widget.Button
+    <!--<android.widget.Button
         android:id="@+id/btnNext"
         android:layout_width="376dp"
         android:layout_height="54dp"
@@ -30,9 +30,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.445" />
+        app:layout_constraintVertical_bias="0.445" />-->
 
-    <Button
+
+    <!--<Button
         android:id="@+id/btn_change_lang_town_selection"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -41,20 +42,37 @@
         android:layout_marginRight="16dp"
         android:text="@string/lang_short"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" />-->
+
+    <Button
+        android:id="@+id/btnNext"
+        android:layout_width="274dp"
+        android:layout_height="62dp"
+        android:layout_marginBottom="236dp"
+        android:background="#673AB7"
+        android:text="@string/nextstep"
+        android:textColor="#FFFFFF"
+        app:backgroundTint="#3A7BCA"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!--app:layout_constraintTop_toBottomOf="@+id/titleToolbar"--><![CDATA[/>
+
+    ]]>
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="40dp"
         android:text="@string/city"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.041"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titleToolbar"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -65,7 +83,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:background="#527F9C"
+        android:background="#527AAA"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -96,6 +114,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnNext"
         app:layout_constraintVertical_bias="0.617" />
+
+    <Button
+        android:id="@+id/btn_change_lang_town_selection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/change_language"
+        android:background="#673AB7"
+        android:textColor="#FFFFFF"
+        app:backgroundTint="#3A7BCA"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

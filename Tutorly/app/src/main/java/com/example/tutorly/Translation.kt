@@ -8,9 +8,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat.startActivity
 import java.util.*
 
-class Translation : AppCompatActivity(){
+object Translation : AppCompatActivity(){
 
-    lateinit var locale: Locale
+    var locale: Locale = Locale("default")
 
     fun changeLang(localeName: String, context: Context) {
         locale = Locale(localeName)
