@@ -63,5 +63,12 @@
     <string name="btnApply">Apply</string>
     <string name="available_tutors">Available tutors</string>
     <string name="done">Done</string>
+    <string name="tutorName">Name:</string>
+    <string name="tutorSurname">Surname:</string>
+    <string name="tutorPhone">Phone:</string>
+    <string name="tutorEmail">Email:</string>
+    <string name="tutorInformation">Tutor Information</string>
+    <string name="tutorSubject">Subjects</string>
+
 
 </resources>

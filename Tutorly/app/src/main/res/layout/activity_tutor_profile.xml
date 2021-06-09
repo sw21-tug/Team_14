@@ -14,7 +14,7 @@
             android:id="@+id/txtTutorInfo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Tutor Information"
+            android:text="@string/tutorInformation"
             android:textSize="34sp"
             android:textStyle="bold"
             android:gravity="center_horizontal" />
@@ -49,7 +49,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingLeft="25dp"
-                    android:text="Name: Ivan"
+                    android:text="@string/tutorName"
                     android:textSize="20sp" />
 
                 <TextView
@@ -57,7 +57,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingLeft="25dp"
-                    android:text="Surname: Mic"
+                    android:text="@string/tutorSurname"
                     android:textSize="20sp" />
 
                 <TextView
@@ -65,7 +65,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingLeft="25dp"
-                    android:text="Phone: 0123456"
+                    android:text="@string/tutorPhone"
                     android:textSize="20sp" />
 
                 <TextView
@@ -74,7 +74,7 @@
                     android:layout_height="wrap_content"
                     android:paddingLeft="25dp"
 
-                    android:text="E-Mail: ivan@tugraz.at"
+                    android:text="@string/tutorEmail"
                     android:textSize="20sp" />
             </LinearLayout>
         </LinearLayout>
@@ -84,7 +84,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:text="Subjects"
+            android:text="@string/tutorSubject"
             android:textSize="34sp"
             android:textStyle="bold"
             android:paddingTop="5dp"/>

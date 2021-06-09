@@ -36,19 +36,19 @@ class TutorProfile : AppCompatActivity() {
 
         // Show tutor name
         val tutorNameView = findViewById<View>(R.id.txtTutorName) as TextView
-        tutorNameView.text = "Name: $tutorName"
+        tutorNameView.text = getString(R.string.tutorName) + " " + tutorName
 
         // Show tutor age
         val tutorAgeView = findViewById<View>(R.id.txtTutorAge) as TextView
-        tutorAgeView.text = "Age: $tutorSurnamne"
+        tutorAgeView.text = getString(R.string.tutorSurname) + " " + tutorSurnamne
 
         // Show tutor gender
         val tutorGenderView = findViewById<View>(R.id.txtTutorGender) as TextView
-        tutorGenderView.text = "Gender: $tutorPhone"
+        tutorGenderView.text = getString(R.string.tutorPhone) + " " + tutorPhone
 
         // Show tutor gender
         val tutorMailView = findViewById<View>(R.id.txtTutorMail) as TextView
-        tutorMailView.text = "E-Mail: $tutorMail"
+        tutorMailView.text = getString(R.string.tutorEmail) + " " + tutorMail
 
         // create Array adapter
         val arrayAdapter: ArrayAdapter<*>
