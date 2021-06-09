@@ -47,4 +47,5 @@
     <string name="show_tutors">Показать репетиторов</string>
     <string name="available_tutors">Доступные репетиторы</string>
     <string name="done">Сделанный </string>
+    <string name="btnApply">Применять</string>
 </resources>

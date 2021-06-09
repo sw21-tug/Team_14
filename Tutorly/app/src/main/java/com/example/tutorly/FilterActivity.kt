@@ -83,6 +83,7 @@ class FilterActivity : AppCompatActivity() {
         val intent = Intent(this, MainActivity::class.java)
         intent.putExtra("filterLok", selected_level_knowledge)
         intent.putExtra("filterSub", subjectAdapter.getSelectedSubjects())
+        intent.putExtra("activity", "filter")
         setResult(Activity.RESULT_OK, intent)
         finish()
     }
