@@ -40,6 +40,7 @@ class MainActivity : AppCompatActivity() {
 
         val button: Button = findViewById(R.id.btnTownSelection)
         val changeLang: Button = findViewById(R.id.btn_change_lang_main_activity)
+        val newTutorButton: Button = findViewById(R.id.btn_new_tutor)
 
 
         button.setOnClickListener {
@@ -48,6 +49,11 @@ class MainActivity : AppCompatActivity() {
 
         }
 
+        newTutorButton.setOnClickListener {
+            val intent = Intent(this, NewTutor::class.java)
+            startActivity(intent);
+
+        }
 
         changeLang.setOnClickListener {
             val list = arrayOf("English", "Russian")

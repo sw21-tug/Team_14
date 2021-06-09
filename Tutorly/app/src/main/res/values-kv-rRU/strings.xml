@@ -42,4 +42,7 @@
     <string name="learn_example_subject">выучить тему примера</string>
     <string name="city_hint">Город</string>
     <string name="lang_short">RU</string>
+    <string name="tutor_phone_number">Телефонный номер</string>
+    <string name="title_activity_new_tutor">Станьте помощником преподавателя</string>
+    <string name="btnApply">Применять</string>
 </resources>
