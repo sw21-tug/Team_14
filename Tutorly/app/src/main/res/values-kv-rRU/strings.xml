@@ -10,7 +10,7 @@
     <string name="activity_filter_selected_subjects">Избранные предметы</string>
     <string name="activity_filter_available_subjects">Доступные предметы</string>
     <string name="filterRadioBtnLvl1">Школа</string>
-    <string name="filterRadioBtnLvl2">продвинутый уровень</string>
+    <string name="filterRadioBtnLvl2">передовой</string>
     <string name="filterRadioBtnLvl3">Университет</string>
     <string name="prompt_email">Электронное письмо</string>
     <string name="prompt_password">Пароль</string>
@@ -26,6 +26,7 @@
     <string name="action_register">регистр</string>
     <string name="town_selection">выбор города</string>
     <string name="change_language">изменить язык</string>
+    <string name="filterDone">гото́вый</string>
     <string name="register_account">Нет учетной записи? регистр</string>
     <string name="have_account">Уже есть аккаунт? Войти</string>
     <string name="subject">предмет</string>
