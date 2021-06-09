@@ -1,8 +1,14 @@
 package com.example.tutorly.database
 
+import android.content.res.Resources
 import android.util.Log
 import com.example.tutorly.Subject
+import com.example.tutorly.Translation
+import com.example.tutorly.Translation.locale
 import com.google.firebase.database.*
+import java.util.*
+import kotlin.collections.ArrayList
+import kotlin.collections.HashMap
 import kotlin.reflect.KFunction1
 
 
@@ -14,6 +20,8 @@ class Database constructor(private val reference: DatabaseReference = FirebaseDa
     lateinit var dbTutorsListener: ValueEventListener
 
     fun getSubjectsList(updateUI: (newSubjects: ArrayList<Subject>) -> Unit) {
+        var current_language = Locale.getDefault().language;
+        print(current_language)
         val subjects_ref = reference.child("subjects")
         dbSubjectListener = object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
@@ -24,6 +32,9 @@ class Database constructor(private val reference: DatabaseReference = FirebaseDa
                         continue
                     var id = ""
                     var desc = ""
+                    var descRU = ""
+                    var subject_name = ""
+                    var subject_nameRU = ""
                     for(child in subject_data.children)
                     {
                         if(child.key == null || child.value == null)
@@ -38,8 +49,34 @@ class Database constructor(private val reference: DatabaseReference = FirebaseDa
                         {
                             desc = child.value as String
                         }
+
+                        if(child.key == "descriptionRU")
+                        {
+                            descRU = child.value as String
+                        }
+
+                        if(child.key == "name")
+                        {
+                            subject_name = child.value as String
+                        }
+
+                        if(child.key == "nameRU")
+                        {
+                            subject_nameRU = child.value as String
+                        }
                     }
-                    val subject = Subject(id, subject_data.key as String, desc)
+                    val subject: Subject
+                    //if (Locale.getDefault().language.equals(Locale("en").language))
+                    if (Locale.getDefault().language.equals("en"))
+                    {
+                        subject = Subject(id, subject_name, desc)
+                    }
+                    else
+                    {
+                        subject = Subject(id, subject_nameRU, descRU)
+                    }
+
+                    println("Check: " + Translation.locale)
                     println("Adding: " + subject.name)
                     subject_list.add(subject)
                 }

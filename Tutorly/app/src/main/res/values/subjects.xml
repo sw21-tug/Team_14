@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="idGerman" >German</string>
+    <string name="idPhysics" >Physics</string>
+    <string name="idProgramming" >Programming</string>
+
+    <string name="idGermanDesc" >Learn German language</string>
+    <string name="idPhysicsDesc" >Learn Physics</string>
+    <string name="idProgrammingDesc" >Learn Programming languages</string>
+</resources>

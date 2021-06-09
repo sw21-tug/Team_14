@@ -62,7 +62,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/input_password_login" />
 
-    <Button
+    <!--<Button
         android:id="@+id/btn_change_lang"
         android:layout_width="362dp"
         android:layout_height="64dp"
@@ -82,7 +82,17 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.51"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" />-->
+    <Button
+        android:id="@+id/btn_change_lang"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/change_language"
+        android:background="#673AB7"
+        android:textColor="#FFFFFF"
+        app:backgroundTint="#3A7BCA"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <ProgressBar
         android:id="@+id/loading"
