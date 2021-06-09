@@ -73,6 +73,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/title_activity_new_tutor"
+        android:onClick="switchToNewTutor"
         app:layout_constraintBottom_toTopOf="@+id/btn_change_lang_main_activity"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

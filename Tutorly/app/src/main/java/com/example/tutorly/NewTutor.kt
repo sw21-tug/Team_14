@@ -1,6 +1,8 @@
 package com.example.tutorly
 
+import android.app.Activity
 import android.app.AlertDialog
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.widget.Button
@@ -58,6 +60,15 @@ class NewTutor : AppCompatActivity() {
                 dialog.dismiss()
             }
             builder.show()
+        }
+
+        val btnApply : Button = findViewById(R.id.btnApply)
+        btnApply.setOnClickListener{
+            val intent = Intent(this, MainActivity::class.java)
+            intent.putExtra("newTutorSub", subjectAdapterTutor.getSelectedSubjects())
+            intent.putExtra("activity", "newTutor")
+            setResult(Activity.RESULT_OK, intent)
+            finish()
         }
     }
 }

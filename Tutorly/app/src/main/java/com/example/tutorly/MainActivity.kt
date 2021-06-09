@@ -16,6 +16,7 @@ import kotlin.system.exitProcess
 
 lateinit var selectedLevelOfKnowledge : String
 lateinit var selectedSubjects : ArrayList<String>
+lateinit var newTutorSub : ArrayList<String>
 
 class MainActivity : AppCompatActivity() {
 
@@ -49,12 +50,6 @@ class MainActivity : AppCompatActivity() {
 
         }
 
-        newTutorButton.setOnClickListener {
-            val intent = Intent(this, NewTutor::class.java)
-            startActivity(intent);
-
-        }
-
         changeLang.setOnClickListener {
             val list = arrayOf("English", "Russian")
             val builder = AlertDialog.Builder(this@MainActivity)
@@ -79,15 +74,37 @@ class MainActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
 
         if (data != null) {
-            selectedSubjects = data.getStringArrayListExtra("filterSub") as ArrayList<String>
+            val activity : String = data.getStringExtra("activity").toString()
+            when(activity){
+                "filter" -> {
+                    selectedSubjects = data.getStringArrayListExtra("filterSub") as ArrayList<String>
+                    selectedLevelOfKnowledge = data.getStringExtra("filterLok").toString()
+                    println(selectedSubjects)
+                    println(selectedLevelOfKnowledge)
+                }
+                "newTutor" -> {
+                    newTutorSub = data.getStringArrayListExtra("newTutorSub") as ArrayList<String>
+                    println(newTutorSub)
+                }
+            }
+
+            /*selectedSubjects = data.getStringArrayListExtra("filterSub") as ArrayList<String>
             selectedLevelOfKnowledge = data.getStringExtra("filterLok").toString()
+            newTutorSub = data.getStringArrayListExtra("newTutorSub") as ArrayList<String>
             println(selectedSubjects)
             println(selectedLevelOfKnowledge)
+            println(newTutorSub)*/
         }
     }
 
     fun switchToFilter(view: View) {
         val switchIntent = Intent(this, FilterActivity::class.java).apply() {
+        }
+        startActivityForResult(switchIntent, 1)
+    }
+
+    fun switchToNewTutor(view: View) {
+        val switchIntent = Intent(this, NewTutor::class.java).apply() {
         }
         startActivityForResult(switchIntent, 1)
     }
