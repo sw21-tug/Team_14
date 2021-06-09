@@ -59,4 +59,9 @@
     <string name="filterDone">Done</string>
     <string name="show_tutors">Show Tutors</string>
 
+    <string name="title_activity_new_tutor">Become a Teaching Assistant</string>
+    <string name="tutor_phone_number">Phone Number</string>
+
+
+
 </resources>
