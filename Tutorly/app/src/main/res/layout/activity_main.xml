@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/btn_change_lang_main_activity"
+        app:layout_constraintBottom_toTopOf="@+id/btn_new_tutor"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="0dp">
 
@@ -47,8 +47,8 @@
             <Button
                 android:id="@+id/btnTownSelection"
                 android:layout_width="0dp"
-                android:layout_weight="0.5"
                 android:layout_height="wrap_content"
+                android:layout_weight="0.5"
                 android:text="@string/town_selection" />
 
         </LinearLayout>
@@ -63,9 +63,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scrollbars="vertical" />
+
         </LinearLayout>
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_new_tutor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/title_activity_new_tutor"
+        app:layout_constraintBottom_toTopOf="@+id/btn_change_lang_main_activity"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btn_change_lang_main_activity"
