@@ -57,7 +57,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingLeft="25dp"
-                    android:text="Age: 20"
+                    android:text="Surname: Mic"
                     android:textSize="20sp" />
 
                 <TextView
@@ -65,7 +65,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingLeft="25dp"
-                    android:text="Gender: Male"
+                    android:text="Phone: 0123456"
                     android:textSize="20sp" />
 
                 <TextView
