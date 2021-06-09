@@ -19,6 +19,8 @@ class NewTutor : AppCompatActivity() {
 
         setContentView(R.layout.activity_new_tutor)
 
+        setSupportActionBar(findViewById(R.id.titleToolbar))
+
         val changeLang: Button = findViewById(R.id.btn_change_lang_new_tutor)
         changeLang.setOnClickListener {
             val list = arrayOf("English", "Russian")

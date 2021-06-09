@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
         val changeLang: Button = findViewById(R.id.btn_change_lang_main_activity)
         val newTutorButton: Button = findViewById(R.id.btn_new_tutor)
 
-
+{
         button.setOnClickListener {
             val intent = Intent(this, TownSelection::class.java)
             startActivity(intent);
