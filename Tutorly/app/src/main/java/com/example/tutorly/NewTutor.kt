@@ -1,14 +1,12 @@
 package com.example.tutorly
 
 import android.app.AlertDialog
+import android.os.Build
 import android.os.Bundle
 import android.widget.Button
-import com.google.android.material.snackbar.Snackbar
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -20,11 +18,13 @@ class NewTutor : AppCompatActivity() {
     lateinit var subjectAdapterTutor : RecyclerViewAdapter
 
 
+    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_new_tutor)
         setSupportActionBar(findViewById(R.id.titleToolbar))
+        setTitle(R.string.title_activity_new_tutor)
 
         val availableSubjects: ArrayList<Subject> = ArrayList()
 
