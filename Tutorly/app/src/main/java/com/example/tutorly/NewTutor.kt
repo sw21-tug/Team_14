@@ -6,13 +6,15 @@ import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.widget.Button
+import android.widget.EditText
+import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.tutorly.database.DatabaseHolder
+import com.example.tutorly.database.*
 
 class NewTutor : AppCompatActivity() {
 
@@ -31,6 +33,7 @@ class NewTutor : AppCompatActivity() {
         val availableSubjects: ArrayList<Subject> = ArrayList()
 
         val newTutorRecyclerView = findViewById<RecyclerView>(R.id.newTutorRecyclerView)
+        val phoneNumberView = findViewById<EditText>(R.id.phoneNum)
         newTutorRecyclerView.setHasFixedSize(true)
 
         newTutorRecyclerView.layoutManager = LinearLayoutManager(this)
@@ -65,7 +68,12 @@ class NewTutor : AppCompatActivity() {
         val btnApply : Button = findViewById(R.id.btnApply)
         btnApply.setOnClickListener{
             val intent = Intent(this, MainActivity::class.java)
-            intent.putExtra("newTutorSub", subjectAdapterTutor.getSelectedSubjects())
+            println("Hereee: " + UserAutheniticator().getCurrentUser()?.displayName)
+            val tutorSubjects = HashMap<String, LvlOfKnowledge>()
+            val selectedSubjects = subjectAdapterTutor.getSelectedSubjects()
+            for(subject in selectedSubjects)
+                tutorSubjects[subject] = LvlOfKnowledge.University
+            DatabaseHolder.database.addTutor(Tutor("userID10", "TestUser", "TestSurname", "test@gmail.com", tutorSubjects, phoneNumberView.text.toString()))
             intent.putExtra("activity", "newTutor")
             setResult(Activity.RESULT_OK, intent)
             finish()

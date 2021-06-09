@@ -84,8 +84,6 @@ class MainActivity : AppCompatActivity() {
                     tutorsAdapter.updateFilteredList(selectedSubjects, selectedLevelOfKnowledge)
                 }
                 "newTutor" -> {
-                    newTutorSub = data.getStringArrayListExtra("newTutorSub") as ArrayList<String>
-                    println(newTutorSub)
                 }
             }
         }
