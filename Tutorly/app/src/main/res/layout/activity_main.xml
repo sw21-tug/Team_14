@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#d1e3ff"
     tools:context=".MainActivity">
 
     <LinearLayout
@@ -41,14 +42,27 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.5"
+                android:background="#673AB7"
                 android:onClick="switchToFilter"
-                android:text="@string/filter" />
+                android:paddingLeft="16dp"
+                android:paddingRight="2dp"
+                android:text="@string/filter"
+                android:textColor="#FFFFFF"
+                app:backgroundTint="#3A7BCA" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.05" />
 
             <Button
                 android:id="@+id/btnTownSelection"
                 android:layout_width="0dp"
                 android:layout_weight="0.5"
                 android:layout_height="wrap_content"
+                android:background="#673AB7"
+                android:textColor="#FFFFFF"
+                app:backgroundTint="#3A7BCA"
                 android:text="@string/town_selection" />
         </LinearLayout>
 
@@ -70,7 +84,10 @@
         android:id="@+id/btn_change_lang_main_activity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/lang_short"
+        android:text="@string/change_language"
+        android:background="#673AB7"
+        android:textColor="#FFFFFF"
+        app:backgroundTint="#3A7BCA"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
