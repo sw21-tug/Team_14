@@ -44,11 +44,10 @@ class MainActivity : AppCompatActivity() {
 
 
         button.setOnClickListener {
-            val intent = Intent(this, TownSelection::class.java)
-            startActivity(intent);
-
+            val switchIntent = Intent(this, TownSelection::class.java).apply() {
+            }
+            startActivityForResult(switchIntent, 1)
         }
-
 
         changeLang.setOnClickListener {
             val list = arrayOf("English", "Russian")
@@ -85,6 +84,12 @@ class MainActivity : AppCompatActivity() {
                 }
                 "newTutor" -> {
                 }
+                "townSelection" -> {
+                    var selectedCity = data.getStringExtra("city")
+                    if (selectedCity != null) {
+                        tutorsAdapter.updateCity(selectedCity)
+                    }
+                }
             }
         }
     }
@@ -100,6 +105,7 @@ class MainActivity : AppCompatActivity() {
         }
         startActivityForResult(switchIntent, 1)
     }
+
 
     override fun onBackPressed() {
 

@@ -55,6 +55,7 @@ class TutorsRecyclerView(private val context: Context, private val tutors: Array
         holder.tutorNameView.text = name
         holder.tutorImage.setImageResource(R.drawable.ic_launcher_foreground)
         holder.cardView.setOnClickListener {view: View ->
+
                 // TODO get to information activity of the tutor
             val intent = Intent(context, TutorProfile::class.java)
             intent.putExtra("Tutor",  tutors[holder.adapterPosition])
@@ -72,6 +73,7 @@ class TutorsRecyclerView(private val context: Context, private val tutors: Array
         val filteredTutors = ArrayList<Tutor>()
         for(tutor in tutors)
         {
+
             val tutorSubjects = ArrayList(tutor.subjectIDs.keys)
             val intersectSubjects = tutorSubjects.intersect(selectedSubjects)
 
@@ -80,6 +82,29 @@ class TutorsRecyclerView(private val context: Context, private val tutors: Array
                 val tutorLvlOfKnowledge = tutor.subjectIDs[key]
                 if(tutorLvlOfKnowledge != null && tutorLvlOfKnowledge >= LvlOfKnowledge.valueOf(selectedLevelOfKnowledge))
                     filteredTutors.add(tutor)
+            }
+        }
+        if(filteredTutors.isNotEmpty())
+        {
+            tutors.clear()
+            tutors.addAll(filteredTutors)
+        }
+        else
+        {
+            tutors.clear()
+            tutors.addAll(fullTutorList)
+        }
+        notifyDataSetChanged()
+    }
+
+    fun updateCity(city: String) {
+        val filteredTutors = ArrayList<Tutor>()
+        for(tutor in tutors)
+        {
+            val tutoraddress = tutor.address
+            if(tutoraddress in city || tutoraddress == "")
+            {
+                filteredTutors.add(tutor)
             }
         }
         if(filteredTutors.isNotEmpty())
