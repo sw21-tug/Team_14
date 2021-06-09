@@ -20,6 +20,7 @@
             android:label="@string/title_activity_town_selection"
             android:theme="@style/Theme.Tutorly.NoActionBar" />
         <activity android:name=".RegisterActivity" />
+        <activity android:name=".TutorProfile" />
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

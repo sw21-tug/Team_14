@@ -1,6 +1,7 @@
 package com.example.tutorly
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -50,11 +51,16 @@ class TutorsRecyclerView(private val context: Context, private val tutors: Array
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val name : String = tutors[position].firstName + " " + tutors[position].lastName
+
         holder.tutorNameView.text = name
         holder.tutorImage.setImageResource(R.drawable.ic_launcher_foreground)
         holder.cardView.setOnClickListener {view: View ->
 
                 // TODO get to information activity of the tutor
+            val intent = Intent(context, TutorProfile::class.java)
+            intent.putExtra("Tutor",  tutors[holder.adapterPosition])
+            context.startActivity(intent);
+
         }
     }
 

@@ -4,6 +4,7 @@ import android.content.res.Resources
 import android.util.Log
 import com.example.tutorly.Subject
 import com.example.tutorly.Translation
+import com.example.tutorly.Translation.getString
 import com.example.tutorly.Translation.locale
 import com.google.firebase.database.*
 import java.util.*
@@ -20,8 +21,6 @@ class Database constructor(private val reference: DatabaseReference = FirebaseDa
     lateinit var dbTutorsListener: ValueEventListener
 
     fun getSubjectsList(updateUI: (newSubjects: ArrayList<Subject>) -> Unit) {
-        var current_language = Locale.getDefault().language;
-        print(current_language)
         val subjects_ref = reference.child("subjects")
         dbSubjectListener = object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
@@ -67,13 +66,13 @@ class Database constructor(private val reference: DatabaseReference = FirebaseDa
                     }
                     val subject: Subject
                     //if (Locale.getDefault().language.equals(Locale("en").language))
-                    if (Locale.getDefault().language.equals("en"))
+                    if (locale.toString() == "kv")
                     {
-                        subject = Subject(id, subject_name, desc)
+                        subject = Subject(id, subject_nameRU, descRU)
                     }
                     else
                     {
-                        subject = Subject(id, subject_nameRU, descRU)
+                        subject = Subject(id, subject_name, desc)
                     }
 
                     println("Check: " + Translation.locale)
