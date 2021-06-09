@@ -5,7 +5,7 @@
     <string name="activity_filter_selected_subjects">Selected subjects:</string>
     <string name="activity_filter_available_subjects">Available subjects:</string>
     <string name="filterRadioBtnLvl1">School</string>
-    <string name="filterRadioBtnLvl2">Matura</string>
+    <string name="filterRadioBtnLvl2">A-Level</string>
     <string name="filterRadioBtnLvl3">University</string>
     <string name="title_activity_town_selection">Town Selection</string>
     <!-- Strings used for fragments for navigation -->
