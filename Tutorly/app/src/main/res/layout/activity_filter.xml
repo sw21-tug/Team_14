@@ -7,56 +7,79 @@
     android:background="#D1E3FF"
     tools:context=".FilterActivity">
 
-    <RadioGroup
-        android:id="@+id/filterDifficultyRadioGroup"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_above="@+id/btnDone"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="0dp"
+        android:orientation="vertical">
 
-        <RadioButton
-            android:layout_width="102dp"
+        <RadioGroup
+            android:id="@+id/filterDifficultyRadioGroup"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:buttonTint="@color/radioButtonTint"
-            android:text="@string/filterRadioBtnLvl1" />
+            android:orientation="horizontal">
 
-        <RadioButton
-            android:layout_width="106dp"
-            android:layout_height="wrap_content"
-            android:buttonTint="@color/radioButtonTint"
-            android:text="@string/filterRadioBtnLvl2" />
-        <RadioButton
-            android:layout_width="120dp"
-            android:layout_height="wrap_content"
-            android:text="@string/filterRadioBtnLvl3"
-            android:checked="true"
-            android:buttonTint="@color/radioButtonTint"
-            />
+            <RadioButton
+                android:id="@+id/rbSchool"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".333"
+                android:buttonTint="@color/radioButtonTint"
+                android:text="@string/filterRadioBtnLvl1" />
+
+            <RadioButton
+                android:id="@+id/rbAlevel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".333"
+                android:buttonTint="@color/radioButtonTint"
+                android:text="@string/filterRadioBtnLvl2" />
+
+            <RadioButton
+                android:id="@+id/rbUniversity"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".333"
+                android:buttonTint="@color/radioButtonTint"
+                android:checked="false"
+                android:text="@string/filterRadioBtnLvl3" />
+
+        </RadioGroup>
+
+        <View
+            android:id="@+id/filterLineSplit"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@android:color/darker_gray" />
 
         <Button
             android:id="@+id/btn_change_lang_filter"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginRight="2dp"
-            android:text="@string/lang_short"
+            android:text="@string/change_language"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-    </RadioGroup>
-    <View
-        android:id="@+id/filterLineSplit"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/filterRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="vertical">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnDone"
         android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="@android:color/darker_gray"
-        android:layout_below="@+id/filterDifficultyRadioGroup"/>
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="0dp"
+        android:text="@string/filterDone" />
 
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/filterRecyclerView"
-        android:scrollbars="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/filterLineSplit"
-        />
 </RelativeLayout>
