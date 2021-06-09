@@ -93,6 +93,7 @@ class LoginRegisterTest {
 
     @Test
     fun validLogin() {
+        activityLogin.launchActivity(Intent())
         // Type text and then press the button.
         onView(withId(R.id.input_username_login))
             .perform(typeText(validEmailToBetyped), closeSoftKeyboard())
@@ -107,6 +108,7 @@ class LoginRegisterTest {
 
     @Test
     fun invalidEmailLogin() {
+        activityLogin.launchActivity(Intent())
         // Type text and then press the button.
         onView(withId(R.id.input_username_login))
             .perform(typeText(invalidEmailToBetyped), closeSoftKeyboard())
@@ -121,6 +123,7 @@ class LoginRegisterTest {
 
     @Test
     fun invalidPWLogin() {
+        activityLogin.launchActivity(Intent())
         // Type text and then press the button.
         onView(withId(R.id.input_username_login))
             .perform(typeText(validEmailToBetyped), closeSoftKeyboard())
@@ -136,7 +139,7 @@ class LoginRegisterTest {
     @Test
     fun gotoRegisterclick() {
 
-        activityRegister.launchActivity(Intent())
+        activityLogin.launchActivity(Intent())
         onView(withId(R.id.txt_gotoRegister)).perform(click())
 
         // check
@@ -188,6 +191,7 @@ class LoginRegisterTest {
 
     @Test
     fun validRegister() {
+        activityLogin.launchActivity(Intent())
         onView(withId(R.id.txt_gotoRegister)).perform(click())
         // Type text and then press the button.
         onView(withId(R.id.username_reg))
@@ -211,7 +215,10 @@ class LoginRegisterTest {
 
     @Test
     fun invalidRegister() {
+        activityLogin.launchActivity(Intent())
         onView(withId(R.id.txt_gotoRegister)).perform(click())
+
+
         // Type text and then press the button.
         onView(withId(R.id.username_reg))
             .perform(typeText(validEmailToBeregistered), closeSoftKeyboard())
@@ -234,6 +241,7 @@ class LoginRegisterTest {
 
     @Test
     fun invalidRegisterOnInvalidEmail() {
+        activityLogin.launchActivity(Intent())
         onView(withId(R.id.txt_gotoRegister)).perform(click())
         // Type text and then press the button.
         onView(withId(R.id.username_reg))

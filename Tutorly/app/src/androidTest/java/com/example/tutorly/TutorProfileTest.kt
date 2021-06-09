@@ -8,6 +8,8 @@ import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.SmallTest
 import androidx.test.rule.ActivityTestRule
+import com.example.tutorly.database.LvlOfKnowledge
+import com.example.tutorly.database.Tutor
 import junit.framework.TestCase
 import org.junit.After
 import org.junit.Before
@@ -30,7 +32,10 @@ class TutorProfileTest : TestCase() {
         Intents.init()
 
         // change activity
-        val intent = Intent()
+        val tempTutor = Tutor("testId", "testName", "testLastname", "testEmail", hashMapOf(
+            "German" to LvlOfKnowledge.University, "Physics" to LvlOfKnowledge.School), "12345", "Graz")
+
+        val intent = Intent().putExtra("Tutor", tempTutor)
         tutorProfileActivity.launchActivity(intent)
     }
 
@@ -80,11 +85,11 @@ class TutorProfileTest : TestCase() {
         Espresso.onView(ViewMatchers.withId(R.id.txtTutorName))
             .check(ViewAssertions.matches(ViewMatchers.withText("Name: ${TutorProfile.tutorName}")))
         Espresso.onView(ViewMatchers.withId(R.id.txtTutorAge))
-            .check(ViewAssertions.matches(ViewMatchers.withText("Age: ${TutorProfile.tutorAge}")))
+            .check(ViewAssertions.matches(ViewMatchers.withText("Surname: ${TutorProfile.tutorSurnamne}")))
         Espresso.onView(ViewMatchers.withId(R.id.txtTutorGender))
-            .check(ViewAssertions.matches(ViewMatchers.withText("Gender: ${TutorProfile.tutorGender}")))
+            .check(ViewAssertions.matches(ViewMatchers.withText("Phone: ${TutorProfile.tutorPhone}")))
         Espresso.onView(ViewMatchers.withId(R.id.txtTutorMail))
-            .check(ViewAssertions.matches(ViewMatchers.withText("E-Mail: ${TutorProfile.tutorMail}")))
+            .check(ViewAssertions.matches(ViewMatchers.withText("Email: ${TutorProfile.tutorMail}")))
     }
 
     @Test

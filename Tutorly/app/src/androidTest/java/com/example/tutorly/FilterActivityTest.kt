@@ -75,15 +75,18 @@ class FilterActivityTest : TestCase() {
         // check if the recycler view is visible
         onView(withId(R.id.filterRecyclerView)).check(matches(isDisplayed()))
 
-        // test select subject
-        onView(withId(R.id.filterRecyclerView)).perform(actionOnItemAtPosition<RecyclerViewAdapter.ViewHolder>(4, click()))
+        Thread.sleep(1500);
+        assertTrue(activityFilter.activity.subjectAdapter.getSubjects().size > 0)
 
-        assertTrue(activityFilter.activity.subjectAdapter.getSubjects()[4].isSelected)
+        // test select subject
+        onView(withId(R.id.filterRecyclerView)).perform(actionOnItemAtPosition<RecyclerViewAdapter.ViewHolder>(0, click()))
+
+        assertTrue(activityFilter.activity.subjectAdapter.getSubjects()[0].isSelected)
 
         //test unselect subject
-        onView(withId(R.id.filterRecyclerView)).perform(actionOnItemAtPosition<RecyclerViewAdapter.ViewHolder>(4, click()))
+        onView(withId(R.id.filterRecyclerView)).perform(actionOnItemAtPosition<RecyclerViewAdapter.ViewHolder>(0, click()))
 
-        assertFalse(activityFilter.activity.subjectAdapter.getSubjects()[4].isSelected)
+        assertFalse(activityFilter.activity.subjectAdapter.getSubjects()[0].isSelected)
 
         }
 
