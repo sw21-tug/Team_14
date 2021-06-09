@@ -23,7 +23,6 @@ class FilterActivity : AppCompatActivity() {
     //var selected_level_knowledge: LvlOfKnowledge = LvlOfKnowledge.University
     var selected_level_knowledge : String = "University"
     lateinit var subjectAdapter : RecyclerViewAdapter
-    lateinit var filterData : FilterData;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

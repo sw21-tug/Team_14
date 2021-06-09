@@ -35,7 +35,7 @@ class TownSelection : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_town_selection)
-        setSupportActionBar(findViewById(R.id.titleToolbar))
+        //setSupportActionBar(findViewById(R.id.titleToolbar))
 
         var changeLang: Button = findViewById(R.id.btn_change_lang_town_selection)
 
