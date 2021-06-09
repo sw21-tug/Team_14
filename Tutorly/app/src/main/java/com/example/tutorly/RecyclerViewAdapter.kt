@@ -69,6 +69,20 @@ class RecyclerViewAdapter(private val context: Context, private val subjects: Ar
         }
     }
 
+    fun getSelectedSubjects() : ArrayList<String> {
+
+        var selectedSubjects = ArrayList<String>()
+
+        for(subject in subjects){
+
+            if(subject.isSelected) {
+                selectedSubjects.add(subject.name)
+            }
+        }
+
+        return selectedSubjects
+    }
+
     override fun getItemCount(): Int {
         return subjects.size
     }
