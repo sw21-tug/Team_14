@@ -1,3 +1,4 @@
+
 <resources>
     <string name="app_name">Tutorly</string>
     <string name="filter">Filter</string>
@@ -56,7 +57,12 @@
     <string name="learn_example_subject">learn ExampleSubject</string>
     <string name="city_hint">City</string>
     <string name="lang_short">EN</string>
+
+    <string name="show_tutors">Show Tutors</string>
+
     <string name="title_activity_new_tutor">Become a Teaching Assistant</string>
     <string name="tutor_phone_number">Phone Number</string>
+
+
 
 </resources>
