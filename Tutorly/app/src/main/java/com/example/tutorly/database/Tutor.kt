@@ -8,4 +8,4 @@ enum class LvlOfKnowledge{
 
 class Tutor(
     val id: String, val firstName: String, val lastName: String, val email: String,
-    val subjectIDs: HashMap<String, LvlOfKnowledge>, val phoneNumber: String, val image: Image? = null)
+    val subjectIDs: HashMap<String, LvlOfKnowledge>, val phoneNumber: String, val address: String = "", val image: Image? = null)

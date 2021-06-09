@@ -1,6 +1,7 @@
 package com.example.tutorly
 
 import android.Manifest
+import android.app.Activity
 import android.app.AlertDialog
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -28,7 +29,7 @@ import kotlin.system.exitProcess
 class TownSelection : AppCompatActivity() {
 
 
-
+    var city = ""
     lateinit var placesClient:PlacesClient
     private var placeFields = listOf(Place.Field.ID, Place.Field.NAME, Place.Field.ADDRESS)
 
@@ -38,7 +39,7 @@ class TownSelection : AppCompatActivity() {
         //setSupportActionBar(findViewById(R.id.titleToolbar))
 
         var changeLang: Button = findViewById(R.id.btn_change_lang_town_selection)
-
+        var doneBtn: Button = findViewById(R.id.btnTownDone)
         placesAutocomplete()
 
         changeLang.setOnClickListener{
@@ -60,6 +61,10 @@ class TownSelection : AppCompatActivity() {
             builder.show()
         }
 
+        doneBtn.setOnClickListener {
+            switchToMain()
+        }
+
     }
 
 
@@ -78,6 +83,7 @@ class TownSelection : AppCompatActivity() {
                 Toast.makeText(this@TownSelection, "You have selected "+p0.address, Toast.LENGTH_SHORT).show()
                 val text = findViewById<TextView>(R.id.textView)
                 text.setText(p0.address)
+                city = p0.address.toString()
             }
 
             override fun onError(p0: Status) {
@@ -87,9 +93,17 @@ class TownSelection : AppCompatActivity() {
         })
     }
 
-    override fun onBackPressed() {
+    fun switchToMain()
+    {
         val intent = Intent(this, MainActivity::class.java)
-        startActivity(intent)
+        intent.putExtra("city", city)
+        intent.putExtra("activity", "townSelection")
+        setResult(Activity.RESULT_OK, intent)
+        finish()
+    }
+
+    override fun onBackPressed() {
+        switchToMain()
     }
 
 }

@@ -109,6 +109,7 @@ class Database constructor(private val reference: DatabaseReference = FirebaseDa
                     var name = ""
                     var surname = ""
                     var phone = ""
+                    var city = ""
                     for(tutorInfo in tutor_data.children)
                     {
                         if(tutorInfo.key == null || tutorInfo.value == null)
@@ -131,8 +132,10 @@ class Database constructor(private val reference: DatabaseReference = FirebaseDa
                             phone = tutorInfo.value as String
                         else if(tutorInfo.key == "email")
                             email = tutorInfo.value as String
+                        else if(tutorInfo.key == "city")
+                            city = tutorInfo.value as String
                     }
-                    val tutor = Tutor(userID, name, surname, email, subjectIDs, phone)
+                    val tutor = Tutor(userID, name, surname, email, subjectIDs, phone, city)
                     tutor_list.add(tutor)
                 }
                 updateUI(tutor_list)
