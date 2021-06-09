@@ -1,24 +1,20 @@
 package com.example.tutorly
 
 import android.content.Context
-import android.graphics.Color
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.RelativeLayout
 import android.widget.TextView
-import androidx.core.content.ContextCompat
-import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.example.tutorly.database.LvlOfKnowledge
 import com.example.tutorly.database.Tutor
 import com.google.android.material.card.MaterialCardView
 
 class TutorsRecyclerView(private val context: Context, private val tutors: ArrayList<Tutor>) : RecyclerView.Adapter<TutorsRecyclerView.ViewHolder>() {
 
     lateinit var holder: ViewHolder
-
+    private val fullTutorList = ArrayList<Tutor>()
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val cardView: MaterialCardView
         val tutorNameView: TextView
@@ -40,6 +36,8 @@ class TutorsRecyclerView(private val context: Context, private val tutors: Array
     fun updateTutors(newTutors: ArrayList<Tutor>) {
         tutors.clear()
         tutors.addAll(newTutors)
+        fullTutorList.clear()
+        fullTutorList.addAll(newTutors)
         notifyDataSetChanged()
     }
 
@@ -61,6 +59,34 @@ class TutorsRecyclerView(private val context: Context, private val tutors: Array
 
     override fun getItemCount(): Int {
         return tutors.size
+    }
+
+    fun updateFilteredList(selectedSubjects: ArrayList<String>, selectedLevelOfKnowledge: String) {
+        println("FUll list: $fullTutorList")
+        val filteredTutors = ArrayList<Tutor>()
+        for(tutor in tutors)
+        {
+            val tutorSubjects = ArrayList(tutor.subjectIDs.keys)
+            val intersectSubjects = tutorSubjects.intersect(selectedSubjects)
+
+            for(key in intersectSubjects)
+            {
+                val tutorLvlOfKnowledge = tutor.subjectIDs[key]
+                if(tutorLvlOfKnowledge != null && tutorLvlOfKnowledge >= LvlOfKnowledge.valueOf(selectedLevelOfKnowledge))
+                    filteredTutors.add(tutor)
+            }
+        }
+        if(filteredTutors.isNotEmpty())
+        {
+            tutors.clear()
+            tutors.addAll(filteredTutors)
+        }
+        else
+        {
+            tutors.clear()
+            tutors.addAll(fullTutorList)
+        }
+        notifyDataSetChanged()
     }
 
 }
