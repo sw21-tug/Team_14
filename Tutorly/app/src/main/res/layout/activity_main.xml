@@ -58,8 +58,8 @@
             <Button
                 android:id="@+id/btnTownSelection"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
                 android:layout_weight="0.5"
+                android:layout_height="wrap_content"
                 android:background="#673AB7"
                 android:textColor="#FFFFFF"
                 app:backgroundTint="#3A7BCA"
@@ -85,7 +85,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scrollbars="vertical" />
-
         </LinearLayout>
 
     </LinearLayout>
@@ -111,4 +110,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
+>>>>>>>>> Temporary merge branch 2
 </androidx.constraintlayout.widget.ConstraintLayout>

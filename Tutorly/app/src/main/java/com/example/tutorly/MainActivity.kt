@@ -81,10 +81,9 @@ class MainActivity : AppCompatActivity() {
                     selectedLevelOfKnowledge = data.getStringExtra("filterLok").toString()
                     println(selectedSubjects)
                     println(selectedLevelOfKnowledge)
+                    tutorsAdapter.updateFilteredList(selectedSubjects, selectedLevelOfKnowledge)
                 }
                 "newTutor" -> {
-                    newTutorSub = data.getStringArrayListExtra("newTutorSub") as ArrayList<String>
-                    println(newTutorSub)
                 }
             }
         }
