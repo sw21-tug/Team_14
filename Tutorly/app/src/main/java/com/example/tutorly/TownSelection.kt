@@ -35,7 +35,7 @@ class TownSelection : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_town_selection)
-        setSupportActionBar(findViewById(R.id.titleToolbar))
+        //setSupportActionBar(findViewById(R.id.titleToolbar))
 
         var changeLang: Button = findViewById(R.id.btn_change_lang_town_selection)
 
@@ -48,11 +48,11 @@ class TownSelection : AppCompatActivity() {
 
             builder.setSingleChoiceItems(list, -1) { dialog, which ->
                 if (which == 0) {
-                    Translation().changeLang("default", this)
+                    Translation.changeLang("default", this)
                     recreate()
                 }
                 else if (which == 1) {
-                    Translation().changeLang("kv", this)
+                    Translation.changeLang("kv", this)
                     recreate()
                 }
                 dialog.dismiss()

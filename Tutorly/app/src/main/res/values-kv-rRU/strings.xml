@@ -44,5 +44,8 @@
     <string name="lang_short">RU</string>
     <string name="tutor_phone_number">Телефонный номер</string>
     <string name="title_activity_new_tutor">Станьте помощником преподавателя</string>
+    <string name="show_tutors">Показать репетиторов</string>
+    <string name="available_tutors">Доступные репетиторы</string>
+    <string name="done">Сделанный </string>
     <string name="btnApply">Применять</string>
 </resources>

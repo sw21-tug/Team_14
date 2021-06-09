@@ -33,11 +33,11 @@ class RegisterActivity : AppCompatActivity() {
 
             builder.setSingleChoiceItems(list, -1) { dialog, which ->
                 if (which == 0) {
-                    Translation().changeLang("default", this)
+                    Translation.changeLang("default", this)
                     recreate()
                 }
                 else if (which == 1) {
-                    Translation().changeLang("kv", this)
+                    Translation.changeLang("kv", this)
                     recreate()
                 }
                 dialog.dismiss()

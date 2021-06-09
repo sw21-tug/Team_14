@@ -41,7 +41,6 @@ class MainActivity : AppCompatActivity() {
 
         val button: Button = findViewById(R.id.btnTownSelection)
         val changeLang: Button = findViewById(R.id.btn_change_lang_main_activity)
-        val newTutorButton: Button = findViewById(R.id.btn_new_tutor)
 
 
         button.setOnClickListener {
@@ -50,6 +49,7 @@ class MainActivity : AppCompatActivity() {
 
         }
 
+
         changeLang.setOnClickListener {
             val list = arrayOf("English", "Russian")
             val builder = AlertDialog.Builder(this@MainActivity)
@@ -57,11 +57,11 @@ class MainActivity : AppCompatActivity() {
 
             builder.setSingleChoiceItems(list, -1) { dialog, which ->
                 if (which == 0) {
-                    Translation().changeLang("default", this)
+                    Translation.changeLang("default", this)
                     recreate()
                 }
                 else if (which == 1) {
-                    Translation().changeLang("kv", this)
+                    Translation.changeLang("kv", this)
                     recreate()
                 }
                 dialog.dismiss()
@@ -87,13 +87,6 @@ class MainActivity : AppCompatActivity() {
                     println(newTutorSub)
                 }
             }
-
-            /*selectedSubjects = data.getStringArrayListExtra("filterSub") as ArrayList<String>
-            selectedLevelOfKnowledge = data.getStringExtra("filterLok").toString()
-            newTutorSub = data.getStringArrayListExtra("newTutorSub") as ArrayList<String>
-            println(selectedSubjects)
-            println(selectedLevelOfKnowledge)
-            println(newTutorSub)*/
         }
     }
 

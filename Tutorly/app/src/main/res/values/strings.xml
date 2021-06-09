@@ -61,5 +61,7 @@
     <string name="title_activity_new_tutor">Become a Teaching Assistant</string>
     <string name="tutor_phone_number">Phone Number</string>
     <string name="btnApply">Apply</string>
+    <string name="available_tutors">Available tutors</string>
+    <string name="done">Done</string>
 
 </resources>
