@@ -7,6 +7,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import com.example.tutorly.database.User
 import com.example.tutorly.database.UserAutheniticator
 
@@ -22,6 +23,29 @@ class RegisterActivity : AppCompatActivity() {
         val regButton: Button = findViewById(R.id.btn_register)
         val firstname: EditText = findViewById(R.id.input_firstname)
         val lastname: EditText = findViewById(R.id.input_lastname)
+
+        val changeLang: Button = findViewById(R.id.btn_change_lang_register)
+
+        changeLang.setOnClickListener{
+            val list = arrayOf("English", "Russian")
+            val builder = AlertDialog.Builder(this@RegisterActivity)
+            builder.setTitle(R.string.choose_lang)
+
+            builder.setSingleChoiceItems(list, -1) { dialog, which ->
+                if (which == 0) {
+                    Translation().changeLang("default", this)
+                    recreate()
+                }
+                else if (which == 1) {
+                    Translation().changeLang("kv", this)
+                    recreate()
+                }
+                dialog.dismiss()
+            }
+            builder.show()
+        }
+
+
 
         gotoSigninText.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)
