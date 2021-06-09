@@ -48,4 +48,10 @@
     <string name="available_tutors">Доступные репетиторы</string>
     <string name="done">Сделанный </string>
     <string name="btnApply">Применять</string>
+    <string name="tutorName">Имя:</string>
+    <string name="tutorSurname">Фамилия:</string>
+    <string name="tutorPhone">Телефон:</string>
+    <string name="tutorEmail">е-мейл:</string>
+    <string name="tutorInformation">Информация</string>
+    <string name="tutorSubject">Предметы</string>
 </resources>
