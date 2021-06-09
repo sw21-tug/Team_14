@@ -6,16 +6,38 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.DefaultItemAnimator
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.tutorly.database.DatabaseHolder
+import com.example.tutorly.database.Tutor
 import kotlin.system.exitProcess
 
 class MainActivity : AppCompatActivity() {
+
+    lateinit var tutorsAdapter : TutorsRecyclerView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        val filteredTutors: ArrayList<Tutor> = ArrayList()
+
+
+        val tutorsRecyclerView = findViewById<RecyclerView>(R.id.tutorsRecyclerView)
+        tutorsRecyclerView.setHasFixedSize(true)
+
+        tutorsRecyclerView.layoutManager = LinearLayoutManager(this)
+        tutorsRecyclerView.itemAnimator = DefaultItemAnimator()
+        tutorsAdapter = TutorsRecyclerView(this, filteredTutors)
+        val database = DatabaseHolder.database
+        database.getTutorList(tutorsAdapter::updateTutors)
+        tutorsRecyclerView.adapter = tutorsAdapter
+
         val button: Button = findViewById(R.id.btnTownSelection)
         val changeLang: Button = findViewById(R.id.btn_change_lang_main_activity)
         val newTutorButton: Button = findViewById(R.id.btn_new_tutor)
+
 
         button.setOnClickListener {
             val intent = Intent(this, TownSelection::class.java)
@@ -23,11 +45,13 @@ class MainActivity : AppCompatActivity() {
 
         }
 
+
         newTutorButton.setOnClickListener {
             val intent = Intent(this, NewTutor::class.java)
             startActivity(intent);
 
         }
+
 
         changeLang.setOnClickListener {
             val list = arrayOf("English", "Russian")
