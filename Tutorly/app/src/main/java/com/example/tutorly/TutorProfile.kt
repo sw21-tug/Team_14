@@ -26,11 +26,13 @@ class TutorProfile : AppCompatActivity() {
         setContentView(R.layout.activity_tutor_profile)
 
         val tutorInfo = intent.getSerializableExtra("Tutor") as Tutor
-
-        tutorName = tutorInfo.firstName
-        tutorSurnamne = tutorInfo.lastName
-        tutorMail = tutorInfo.email
-        tutorPhone = tutorInfo.phoneNumber
+        if(tutorInfo != null)
+        {
+            tutorName = tutorInfo.firstName
+            tutorSurnamne = tutorInfo.lastName
+            tutorMail = tutorInfo.email
+            tutorPhone = tutorInfo.phoneNumber
+        }
 
 
 

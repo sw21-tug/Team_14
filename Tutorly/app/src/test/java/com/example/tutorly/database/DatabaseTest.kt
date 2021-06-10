@@ -89,6 +89,7 @@ class DatabaseTest : TestCase() {
 
     @Test
     fun testTutorList(){
+        database.getTutorList(::changeVarTutors)
         database.dbTutorsListener.onDataChange(mockedDataSnapshot)
 
         try {

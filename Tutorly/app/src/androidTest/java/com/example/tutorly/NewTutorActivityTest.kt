@@ -26,6 +26,14 @@ class NewTutorActivityTest : TestCase(){
         true,
         false)
 
+    var activityMain: ActivityTestRule<MainActivity> = ActivityTestRule<MainActivity>(
+        MainActivity::class.java,
+        true,
+        false)
+
+    var ruleSwitchToNewTutor =
+        ActivityTestRule(NewTutor::class.java, true, false)
+
     @Before
     fun initIntent() {
         Intents.init()
@@ -38,6 +46,30 @@ class NewTutorActivityTest : TestCase(){
 
     @Test
     fun uiTest() {
+        activityNewTutor.launchActivity(Intent())
+        Espresso.onView(ViewMatchers.withId(R.id.newTutorRecyclerView))
+            .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
+        Espresso.onView(ViewMatchers.withId(R.id.btnApply))
+            .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
+        Espresso.onView(ViewMatchers.withId(R.id.phoneNum))
+            .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
+        Espresso.onView(ViewMatchers.withId(R.id.btn_change_lang_new_tutor))
+            .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
+        Espresso.onView(ViewMatchers.withId(R.id.townAutocomplete_fragment))
+            .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
+    }
+
+    @Test
+    fun toNewTutorActivity()
+    {
+        activityMain.launchActivity(Intent())
+        Espresso.onView(ViewMatchers.withId(R.id.btn_new_tutor))
+            .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
+        Espresso.onView(ViewMatchers.withId(R.id.btn_new_tutor)).perform(ViewActions.click())
+
+        // Check that only once run
+        ruleSwitchToNewTutor.launchActivity(Intent())
+        Intents.intended(IntentMatchers.hasComponent(MainActivity::class.java.name))
     }
 
 }

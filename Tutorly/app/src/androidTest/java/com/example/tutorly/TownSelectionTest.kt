@@ -36,11 +36,18 @@ class TownSelectionTest {
     private lateinit var validCity: String
 
 
-    @get:Rule
-    var townSelection: ActivityScenarioRule<TownSelection>
-            = ActivityScenarioRule(TownSelection::class.java)
-    var ruleFromMainTownSelection =
-            ActivityTestRule(MainActivity::class.java, true, false)
+    var activityMain: ActivityTestRule<MainActivity> = ActivityTestRule<MainActivity>(
+        MainActivity::class.java,
+        true,
+        false)
+
+    var activityTownSelection: ActivityTestRule<TownSelection> = ActivityTestRule<TownSelection>(
+        TownSelection::class.java,
+        true,
+        false)
+
+    var ruleSwitchToTownSel =
+        ActivityTestRule(TownSelection::class.java, true, false)
 
     @Before
     fun init() {
@@ -50,12 +57,19 @@ class TownSelectionTest {
         validCity = "Graz"
     }
 
+    @After
+    fun tearDown() {
+        Intents.release()
+    }
+
     @Test
-    /*fun getToTownSelection(){
+    fun getToTownSelection(){
+        activityMain.launchActivity(Intent())
         onView(withId(R.id.btnTownSelection)).perform(click())
-        ruleFromMainTownSelection.launchActivity(Intent())
+        // check
+        ruleSwitchToTownSel.launchActivity(Intent())
         intended(hasComponent(TownSelection::class.java.name), times(2))
-    }*/
+    }
 
     fun checkIfPopUpAppears()
     {
@@ -64,9 +78,12 @@ class TownSelectionTest {
         java.util.concurrent.TimeUnit.SECONDS.sleep(2)
     }
 
-    /*@Test
+    @Test
     fun typeCity(){ //some problem with the test
         // Type text
+        activityTownSelection.launchActivity(Intent())
+        /*
+        onView(withId(R.id.autocomplete_fragment)).perform(typeText("Salzburg"), closeSoftKeyboard())
         onView(withId(R.id.autocomplete_fragment))
                 .perform(click())
         java.util.concurrent.TimeUnit.SECONDS.sleep(2)
@@ -77,14 +94,10 @@ class TownSelectionTest {
         // Check that the text was changed.
         onView(withId(R.id.autocomplete_fragment))
                 .check(matches(withText(validCity)))
-
-    }*/
-    /*@Test
-    fun cityTest()
-    {
-        onPlaceSelected()
-    }*/
-
-
-
+        */
+        onView(withId(R.id.autocomplete_fragment)).check(matches(isDisplayed()))
+        onView(withId(R.id.textView3)).check(matches(isDisplayed()))
+        onView(withId(R.id.btn_change_lang_town_selection)).check(matches(isDisplayed()))
+        onView(withId(R.id.btnTownDone)).check(matches(isDisplayed()))
+    }
 }
